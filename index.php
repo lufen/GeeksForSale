@@ -7,7 +7,7 @@
    </HEAD>
    <BODY>
    	   <div id="header">
-   	   	<h1><?php
+   	   	   	   	<h1><?php
 			echo "Geeks for sale!!!";
 		?></h1>
 			<s>
@@ -18,7 +18,6 @@
 			</s>
 		</div>
    	   
-
 	   <div id="menu">
 	   	
    	   </div>

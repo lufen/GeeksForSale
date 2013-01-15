@@ -1,11 +1,12 @@
 body
 {
-background-color:#DDFFDD;
+background-color: #D0CBCA;
 }
 
 #header{
 	height: 150px;
-	background-color: #666;
+	border-radius: 15px;
+	background-color: #F3F2F1;
 	margin-bottom: 10px;
 	margin-left: 15%;
 	margin-right: 15%;
@@ -13,21 +14,23 @@ background-color:#DDFFDD;
 
 #menu{
 	height: 2000px;
+	border-radius: 15px;
 	width: 15%;
-	background-color: #666;
+	background-color: #F3F2F1;
 	margin-bottom: 10px;
 	margin-left: 15%;
 }
 
 h1{  
 	text-align: center;
-	top: 140px;
-	color: #90FF90;
+	color: #000000;
+	
 }
 s{
+	position: absolute;
+	margin-top: 55px;
+	margin-left: 0.5%;
 	text-align: left;
-	vertical-align: bottom;
-	bottom: 100px;
 }
 
 left{  

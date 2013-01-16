@@ -28,8 +28,10 @@
 	   </div>
 
       <div id="content">
-            <?php
-         echo "Product details";
+         <?php
+            echo "Product details <br>";
+            $id = $_GET['id'];
+            echo "Product ID to show: ".$id;
          ?>
       </div>
    </BODY>

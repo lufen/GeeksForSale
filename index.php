@@ -27,8 +27,8 @@
          ?>
 	   </div>
       <div id="content">
-            <?php
-         echo "Index";
+         <?php
+            echo "Index";
          ?>
       </div>
    </BODY>

@@ -28,8 +28,8 @@
 	   </div>
 
      <div id="content">
-            <?php
-         echo "Admin";
+         <?php
+            echo "Admin";
          ?>
       </div>
    </BODY>

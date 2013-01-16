@@ -26,10 +26,10 @@
          require_once 'menu.php';
          ?>
 	   </div>
-      
+
       <div id="content">
-            <?php
-         echo "My page";
+         <?php
+            echo "My page";
          ?>
       </div>
    </BODY>

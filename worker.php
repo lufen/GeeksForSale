@@ -28,8 +28,8 @@
 	   </div>
 
       <div id="content">
-            <?php
-         echo "Worker page";
+         <?php
+            echo "Worker page";
          ?>
       </div>
    </BODY>

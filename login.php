@@ -28,8 +28,8 @@
 	   </div>
 
       <div id="content">
-            <?php
-         echo "Login";
+         <?php
+            echo "Login";
          ?>
       </div>
    </BODY>

@@ -27,10 +27,21 @@
          ?>
 	   </div>
       <div id="content">
-            <?php
-         echo "Product category ";
-         $id = $_GET['id'];
-         echo $id;
+         <?php
+            echo "Product category ";
+            $id = $_GET['id'];
+            echo $id;
+
+            $sql = "Select id,name,price from varer where categoriID= ".$id;
+            $sth = $db->prepare($sql);
+            $sth->execute();
+            $sth->setFetchMode(PDO::FETCH_ASSOC);  
+            $array = array();
+            echo "<br>";
+            while($row = $sth->fetch()){
+               echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> ";
+               echo $row['price']." <br>";
+            }
          ?>
       </div>
    </BODY>

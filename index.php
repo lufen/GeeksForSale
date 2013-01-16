@@ -26,5 +26,10 @@
          require_once 'menu.php';
          ?>
 	   </div>
+      <div id="content">
+            <?php
+         echo "Index";
+         ?>
+      </div>
    </BODY>
 </HTML>

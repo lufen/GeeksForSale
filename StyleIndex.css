@@ -40,7 +40,7 @@ h1{
 
 s{
 	position: absolute;
-	margin-top: 55px;
+	margin-top: 5px;
 	margin-left: 0.5%;
 	text-align: left;
 }
@@ -53,5 +53,7 @@ left{
 
 topMenu{  
 	position: absolute;
-	text-align: left;
+	margin-left: 63%;
+	margin-top: 33px;
+	text-align: center;
 }

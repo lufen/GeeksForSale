@@ -2,10 +2,10 @@
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 15, 2013 at 03:12 PM
--- Server version: 5.5.27-log
--- PHP Version: 5.4.6
+-- Vert: 127.0.0.1
+-- Generert den: 16. Jan, 2013 11:43 AM
+-- Tjenerversjon: 5.5.27-log
+-- PHP-Versjon: 5.4.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderdetail`
+-- Tabellstruktur for tabell `orderdetail`
 --
 
 CREATE TABLE IF NOT EXISTS `orderdetail` (
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `orderdetail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Tabellstruktur for tabell `orders`
 --
 
 CREATE TABLE IF NOT EXISTS `orders` (
@@ -53,19 +53,27 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productcategory`
+-- Tabellstruktur for tabell `productcategory`
 --
 
 CREATE TABLE IF NOT EXISTS `productcategory` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `categoryName` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dataark for tabell `productcategory`
+--
+
+INSERT INTO `productcategory` (`id`, `categoryName`) VALUES
+(1, 'Computer Hardware'),
+(2, 'stein');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productexperience`
+-- Tabellstruktur for tabell `productexperience`
 --
 
 CREATE TABLE IF NOT EXISTS `productexperience` (
@@ -80,7 +88,28 @@ CREATE TABLE IF NOT EXISTS `productexperience` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabellstruktur for tabell `subcategory`
+--
+
+CREATE TABLE IF NOT EXISTS `subcategory` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `categoryid` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `categoryid` (`categoryid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dataark for tabell `subcategory`
+--
+
+INSERT INTO `subcategory` (`id`, `name`, `categoryid`) VALUES
+(1, 'Monitors', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -96,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `varer`
+-- Tabellstruktur for tabell `varer`
 --
 
 CREATE TABLE IF NOT EXISTS `varer` (
@@ -110,7 +139,14 @@ CREATE TABLE IF NOT EXISTS `varer` (
   `rabatt` int(10) unsigned NOT NULL,
   `categoriID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dataark for tabell `varer`
+--
+
+INSERT INTO `varer` (`id`, `price`, `pictures`, `name`, `info`, `onStock`, `forSale`, `rabatt`, `categoriID`) VALUES
+(1, 9999, '', 'plpl', 'kjkjk', 55, 1, 0, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

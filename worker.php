@@ -7,6 +7,7 @@
    </HEAD>
    <BODY>
    	   <div id="header">
+            <?php include("topmenu.php"); ?>
    	   	<h1>
                <?php
    			      echo "Geeks for sale!!!";
@@ -21,13 +22,11 @@
 		</div>
    	   
 	   <div id="menu">
-	   <?php
-         // Initate the db connection
-         requirce once 'db.php';
+      <?php
+         require_once 'menu.php';
       ?>
 	   </div>
-   	   
-   	  
 
+      <p>Page for workers to fix problems
    </BODY>
 </HTML>

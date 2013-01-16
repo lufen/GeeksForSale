@@ -24,17 +24,22 @@ background-color: #D0CBCA;
 h1{  
 	text-align: center;
 	color: #000000;
-	
 }
+
 s{
 	position: absolute;
 	margin-top: 55px;
 	margin-left: 0.5%;
 	text-align: left;
 }
-
 left{  
+	text-align: left;
 	height: 50px;
 	width: 15%;
 	background-color: #666;
+}
+
+topMenu{  
+	position: absolute;
+	text-align: left;
 }

@@ -7,8 +7,7 @@
    </HEAD>
    <BODY>
    	   <div id="header">
-            <a href="login.php">Log in</a><br>
-            <a href="mypage.php">My Page</a><br>
+            <?php include("topmenu.php"); ?>
    	   	<h1>
                <?php
    			      echo "Geeks for sale!!!";
@@ -27,5 +26,6 @@
          require_once 'menu.php';
          ?>
 	   </div>
+      <p>Users control page
    </BODY>
 </HTML>

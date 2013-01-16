@@ -26,6 +26,11 @@
          require_once 'menu.php';
          ?>
 	   </div>
-      <p>Users control page
+      
+      <div id="content">
+            <?php
+         echo "My page";
+         ?>
+      </div>
    </BODY>
 </HTML>

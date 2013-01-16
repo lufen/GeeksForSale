@@ -27,6 +27,10 @@
          ?>
 	   </div>
 
-      <p>Product Details
+      <div id="content">
+            <?php
+         echo "Product details";
+         ?>
+      </div>
    </BODY>
 </HTML>

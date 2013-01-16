@@ -27,6 +27,10 @@
          ?>
 	   </div>
 
-      login page
+      <div id="content">
+            <?php
+         echo "Login";
+         ?>
+      </div>
    </BODY>
 </HTML>

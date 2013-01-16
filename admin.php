@@ -27,6 +27,10 @@
          ?>
 	   </div>
 
-     <p>Admin page
+     <div id="content">
+            <?php
+         echo "Admin";
+         ?>
+      </div>
    </BODY>
 </HTML>

@@ -27,6 +27,10 @@
          ?>
 	   </div>
 
-      <p>Register
+      <div id="content">
+            <?php
+         echo "Register";
+         ?>
+      </div>
    </BODY>
 </HTML>

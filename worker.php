@@ -27,6 +27,10 @@
       ?>
 	   </div>
 
-      <p>Page for workers to fix problems
+      <div id="content">
+            <?php
+         echo "Worker page";
+         ?>
+      </div>
    </BODY>
 </HTML>

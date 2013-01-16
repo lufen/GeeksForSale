@@ -26,8 +26,12 @@
          require_once 'menu.php';
          ?>
 	   </div>
-   	   
-   	  
-      <p>Product category
+      <div id="content">
+            <?php
+         echo "Product category ";
+         $id = $_GET['id'];
+         echo $id;
+         ?>
+      </div>
    </BODY>
 </HTML>

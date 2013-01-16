@@ -32,7 +32,7 @@
             $id = $_GET['id'];
             echo $id;
 
-            $sql = "Select id,name,price from varer where categoriID= ".$id;
+            $sql = "Select id,name,price from products where categoriID= ".$id;
             $sth = $db->prepare($sql);
             $sth->execute();
             $sth->setFetchMode(PDO::FETCH_ASSOC);  

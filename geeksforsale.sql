@@ -125,10 +125,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `varer`
+-- Tabellstruktur for tabell `products`
 --
 
-CREATE TABLE IF NOT EXISTS `varer` (
+CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `price` int(10) unsigned NOT NULL,
   `pictures` text NOT NULL,
@@ -142,10 +142,10 @@ CREATE TABLE IF NOT EXISTS `varer` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dataark for tabell `varer`
+-- Dataark for tabell `products`
 --
 
-INSERT INTO `varer` (`id`, `price`, `pictures`, `name`, `info`, `onStock`, `forSale`, `rabatt`, `categoriID`) VALUES
+INSERT INTO `products` (`id`, `price`, `pictures`, `name`, `info`, `onStock`, `forSale`, `rabatt`, `categoriID`) VALUES
 (1, 9999, '', 'plpl', 'kjkjk', 55, 1, 0, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

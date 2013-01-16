@@ -7,20 +7,25 @@
    </HEAD>
    <BODY>
    	   <div id="header">
-   	   	   	   	<h1><?php
-			echo "Geeks for sale!!!";
-		?></h1>
+   	   	<h1>
+               <?php
+   			      echo "Geeks for sale!!!";
+   		       ?>
+            </h1>
 			<s>
-		    <form class="form-wrapper cf">
-	        <input type="text" placeholder="Search here..." required>
-	        <button type="submit">Search</button>
-			</form>
+      	    <form class="form-wrapper cf">
+                 <input type="text" placeholder="Search here..." required>
+                 <button type="submit">Search</button>
+      		</form>
 			</s>
 		</div>
    	   
 	   <div id="menu">
-	   	
-   	   </div>
+	   <?php
+         // Initate the db connection
+         requirce once 'db.php';
+      ?>
+	   </div>
    	   
    	  
 

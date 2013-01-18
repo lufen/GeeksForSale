@@ -30,8 +30,7 @@
          <?php
             // Check if a user was made
             if(isset($_GET['reg'])){
-               $reg = $_GET['reg'];
-               if($reg === "yes"){
+               if($_GET['reg'] === "yes"){
                   echo "<p>User made OK!<br>";
                }
             }

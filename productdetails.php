@@ -29,7 +29,7 @@
 
       <div id="content">
          <?php
-            echo "Product details <br>";
+            echo "Details about product <br>";
             $id = $_GET['id'];
             echo "Product ID to show: ".$id;
          ?>

@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` text NOT NULL,
   `address` text NOT NULL,
   `email` text NOT NULL,
+  `password` text NOT NULL,
   `blacklisted` tinyint(1) NOT NULL,
   `userLevel` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)

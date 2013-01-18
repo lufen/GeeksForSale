@@ -28,6 +28,13 @@
 	   </div>
       <div id="content">
          <?php
+            // Check if a user was made
+            if(isset($_GET['reg'])){
+               $reg = $_GET['reg'];
+               if($reg === "yes"){
+                  echo "<p>User made OK!<br>";
+               }
+            }
             echo "Index";
          ?>
       </div>

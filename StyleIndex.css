@@ -12,7 +12,6 @@ background-color: #D0CBCA;
 	margin-right: 15%;
 }
 
-
 #menu{
 	float: left;
 	height: 2000px;
@@ -56,4 +55,13 @@ topMenu{
 	margin-left: 60%;
 	margin-top: 33px;
 	text-align: center;
+}
+
+:required {
+  border-color: #88a;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
 }

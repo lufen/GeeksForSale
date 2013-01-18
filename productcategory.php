@@ -28,9 +28,9 @@
 	   </div>
       <div id="content">
          <?php
-            echo "Product category ";
             $id = $_GET['id'];
-            echo $id;
+            echo "Category ID: " . $id."<br>";
+            echo "Products in this category: ";
 
             $sql = "Select id,name,price from products where categoriID= ".$id;
             $sth = $db->prepare($sql);

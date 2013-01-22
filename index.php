@@ -10,6 +10,7 @@
             <?php include("topmenu.php"); ?>
    	   	<h1>
                <?php
+                  session_start();
    			      echo "Geeks for sale!!!";
    		       ?>
             </h1>

@@ -1,7 +1,9 @@
 <?php
    session_start();
+   // Save into basket, using p+productID as key
+   // P because the array does not allow for numeric key
    if (isset ($_GET['Quantity'])) {
-      $key = "p".trim($_GET['id']);
+      $key = "p".$_GET['id'];
       if (isset($_SESSION[$key])){
          $_SESSION[$key] = $_SESSION[$key] + $_GET['Quantity'];
       }else{
@@ -43,7 +45,18 @@
          <?php
             echo "Details about product <br>";
             $id = $_GET['id'];
-            echo "<p>Product ID to show: ".$id;
+            $sql = "Select * from products where id=:id";
+            $sth = $db->prepare($sql);
+            $sth->bindValue (':id', $id);
+            $sth->execute();
+            $sth->setFetchMode(PDO::FETCH_ASSOC);  
+            while($row = $sth->fetch()){
+               echo "Name: ".$row['name']."<br>";
+               echo "Price: ".$row['price']."<br>";
+               echo "Details: ".$row['info']."<br>";
+               echo "In stock: ".$row['onStock']."<br>";  
+               echo "Discount: ".$row['rabatt']."<br>";    
+            }
          ?>
          <form method="get" action="productdetails.php">
          <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>

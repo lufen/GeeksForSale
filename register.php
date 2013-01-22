@@ -72,7 +72,7 @@ if (isset ($_POST['name'])) {
          <input type="email" name="Email" required/><br/>
       <label for="Password">Password</label>
          <input type="password" name="Password" required/><br/>
-      <input type="submit" value="Legg til kontaktinformasjon"/>
+      <input type="submit" value="Register"/>
       </div>
    </BODY>
 </HTML>

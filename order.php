@@ -9,7 +9,6 @@ require_once 'db.php';
   	$sth->execute ();
   	// Get ID of last insert
   	$orderID = $db->lastInsertId();
-  	echo $orderID;
   	$ordersplaced = 0;
   	$shouldHaveBeenDone = 0;
  	 foreach ($_SESSION as $key => $quantity){

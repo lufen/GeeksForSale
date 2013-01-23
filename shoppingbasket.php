@@ -4,11 +4,15 @@ session_start();
  if(isset($_GET)){
   foreach($_GET as $key => $qty){
     $_SESSION[$key] = $qty;
-    //header("shoppingbasket.php");
   }
  }
+ // Allow for deleting the cart
+ if(isset($_POST['deleteContent'])){
+  session_unset();
+   echo "Hei";
+  header('Location: '.$_SERVER['REQUEST_URI']);
 
-
+ }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
@@ -63,6 +67,18 @@ session_start();
            echo "Total price: ".$cartPrice."<br>";
          ?>
          <input type="submit" value="Change quantities"/>
+       </form>
+       <form action="order.php" method="post">
+         <input type="hidden" name="placed" value="1"/>
+        <input type="submit" name="submit" value="Buy">
+        </form>
+
+       <form action="shoppingbasket.php" method="post">
+         <input type="hidden" name="deleteContent" value="1"/>
+        <input type="submit" name="submit" value="Empty basket">
+        </form>
+
+
       </div>
    </BODY>
 </HTML>

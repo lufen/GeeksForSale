@@ -54,7 +54,7 @@ require_once 'db.php';
             <?php include("topmenu.php"); ?>
    	   	<h1>
                <?php
-   			      echo "Geeks for sales!!!";
+   			      echo "Geeks for sale!!!";
    		       ?>
             </h1>
 			<s>

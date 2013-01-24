@@ -1,0 +1,10 @@
+- Login for users, admins and workers
+- Admin page
+- worker page
+- mypage for users
+- CSS, make some designs
+- Encrypt user passwords
+- Put some products into the DB
+- Make pretty
+- make OO
+- Not allow for negativ qty's

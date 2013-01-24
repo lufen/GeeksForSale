@@ -16,6 +16,8 @@ if (isset ($_POST['name'])) {
       if($sth->rowCount() === 1){
          echo "<p>OK<br>";
          header( 'Location: index.php?reg=yes' );
+      }else{
+         echo "User not made, Email not unique";
       }
    }
 ?>

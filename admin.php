@@ -1,3 +1,18 @@
+<?php
+  require_once 'db.php';
+  // Add a new top category
+  if(isset($_POST['categoryName'])){
+    $sql = 'INSERT into productcategory (categoryName) values (:categoryName)';
+    $sth = $db->prepare($sql);
+    $sth->bindValue (':categoryName', $_POST['categoryName']);
+    if($sth->execute() === 1){
+         echo "<p>OK<br>";
+         header( 'Location: admin.php' );
+      }
+  }
+
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
@@ -31,6 +46,11 @@
          <?php
             echo "Admin";
          ?>
+         <p> Add a new top category
+        <form action="admin.php" method="post">
+        <input type="text" name="categoryName" required />
+        <input type="submit" name="submit" value="Add">
+        </form>
       </div>
    </BODY>
 </HTML>

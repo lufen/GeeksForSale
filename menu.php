@@ -5,8 +5,8 @@ require_once "db.php";
  $sth = $db->prepare($sql);
  $sth->execute();
  $sth->setFetchMode(PDO::FETCH_ASSOC);  
- echo "<br>";
  while($row = $sth->fetch()){
+ 	echo "<br>";
  	echo $row['categoryName'];
 	// Get subcategories
 	$sql = "Select * from subcategory where categoryid = ".$row['id'];

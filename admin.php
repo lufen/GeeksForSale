@@ -1,7 +1,8 @@
 <?php
   require_once 'db.php';
-  // Add a new top category
+  
   if(isset($_POST['categoryName'])){
+    // Add a new top category
     $sql = 'INSERT into productcategory (categoryName) values (:categoryName)';
     $sth = $db->prepare($sql);
     $sth->bindValue (':categoryName', $_POST['categoryName']);

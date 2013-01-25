@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
 if (isset ($_POST['name'])) {
+      // Add user with a default password, then read back and update it with the encrypted one.
       $sql = 'INSERT INTO users (name, address, email, password, blacklisted, userLevel)VALUES (:name, :address, :email, :password, :blacklisted, :userLevel)';
       $sth = $db->prepare ($sql);
       $adress = $_POST['streetAdress']." ".$_POST['postCode']." ".$_POST['Country'];
@@ -9,12 +10,20 @@ if (isset ($_POST['name'])) {
       $sth->bindValue (':name', $_POST['name']);
       $sth->bindValue (':address', $adress);
       $sth->bindValue (':email', $_POST['Email']);
-      $sth->bindValue (':password', $_POST['Password']);
+      $sth->bindValue (':password',"hei");
       $sth->bindValue (':blacklisted', $blacklisted);
       $sth->bindValue (':userLevel', $userLevel);
       $sth->execute ();
       if($sth->rowCount() === 1){
+         $uid = $db->lastInsertId();
          echo "<p>OK<br>";
+         // Update users password to an encrypted one
+         $sql = 'update users set password = :password where id = :id';
+         $sth = $db->prepare ($sql);
+         $sth->bindValue (':password',convertPlainTextToEncrypted($_POST['Password'],$uid));
+         $sth->bindValue (':id',$uid);
+         $sth->execute ();
+         // Redirect back to homepage
          header( 'Location: index.php?reg=yes' );
       }else{
          echo "User not made, Email not unique";
@@ -57,7 +66,6 @@ if (isset ($_POST['name'])) {
          ?>
 
       <form method="post" action="register.php">
-      <input type="hidden" name="uid" value="<?php echo $_GET['id']; ?>"/>
       <label for="name">Name</label>
          <input type="text" name="name" required  placeholder="John Doe"/><br/>
       <label for="streetAddress">Street adress</label>

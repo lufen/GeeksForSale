@@ -8,7 +8,7 @@ try {
 
 function convertPlainTextToEncrypted($password,$uid){
 	// Convert a password from plaintext into a encrypted one
-	$salt = "A super secret salt";
+	$salt = "fe31661650ad180d494d45b6ad81f2b924d627ae56675525ace771c8cf65a2e6";
 	$password =  $password;
 	$hash = sha1($salt.$uid.$hash);
 	return $hash;

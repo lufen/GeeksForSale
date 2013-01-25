@@ -5,4 +5,5 @@ try {
 } catch (PDOException $e) {
     die ('Could not connect to server : ' . $e->getMessage());
 }
+
 ?>

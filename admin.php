@@ -5,8 +5,7 @@
     $sql = 'INSERT into productcategory (categoryName) values (:categoryName)';
     $sth = $db->prepare($sql);
     $sth->bindValue (':categoryName', $_POST['categoryName']);
-    if($sth->execute() === 1){
-         echo "<p>OK<br>";
+    if($sth->execute()){
          header( 'Location: admin.php' );
       }
   }
@@ -26,11 +25,10 @@
       $sth2 = $db->prepare($sql);
       $sth2->bindValue (':name', $_POST['subcategoryName']);
       $sth2->bindValue (':categoryid', $id);
-      if($sth2->execute() === 1){
-        echo "<p>OK<br>";
+      if($sth2->execute()){
         header( 'Location: admin.php' );
       }
-      }
+    }
   }
   
 

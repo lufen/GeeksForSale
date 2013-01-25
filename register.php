@@ -1,7 +1,6 @@
 <?php
 require_once 'db.php';
 if (isset ($_POST['name'])) {
-   try{
       $sql = 'INSERT INTO users (name, address, email, password, blacklisted, userLevel)VALUES (:name, :address, :email, :password, :blacklisted, :userLevel)';
       $sth = $db->prepare ($sql);
       $adress = $_POST['streetAdress']." ".$_POST['postCode']." ".$_POST['Country'];
@@ -17,11 +16,10 @@ if (isset ($_POST['name'])) {
       if($sth->rowCount() === 1){
          echo "<p>OK<br>";
          header( 'Location: index.php?reg=yes' );
+      }else{
+         echo "User not made, Email not unique";
       }
-   }catch(PDOException $e) {
-  echo 'Error: ' . $e->getMessage();
    }
-}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"

@@ -29,8 +29,12 @@
 
       <div id="content">
          <?php
-            echo "My page";
-         ?>
+            require_once 'db.php';
+			require_once 'user.php';
+			
+			
+			?>
+</div>
       </div>
    </BODY>
 </HTML>

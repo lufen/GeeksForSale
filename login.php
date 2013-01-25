@@ -28,9 +28,12 @@
 	   </div>
 
       <div id="content">
-         <?php
-            echo "Login";
-         ?>
+      	<?php
+			require_once 'db.php';
+			require_once 'user.php';
+
+			
+		?>	
       </div>
    </BODY>
 </HTML>

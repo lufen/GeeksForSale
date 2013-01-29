@@ -1,5 +1,8 @@
 <?php
 require_once 'db.php';
+
+header( 'Location: mypage.php' );
+
 if (isset ($_POST['name'])) {
       // Add user with a default password, then read back and update it with the encrypted one.
       $sql = 'INSERT INTO users (name, address, email, password, blacklisted, userLevel)VALUES (:name, :address, :email, :password, :blacklisted, :userLevel)';

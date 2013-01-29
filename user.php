@@ -38,8 +38,6 @@ class User {
 			// return true;
 		// else
 			// return false;
-			
-
 	}
 
 	function getName () {

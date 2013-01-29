@@ -1,6 +1,11 @@
 <?php
 require_once 'sessionStart.php';
 require_once 'user.php';
+
+if(isset($_SESSION['id'])){
+		header( 'Location: mypage.php' );
+}
+	
 if(isset($_POST['email'])){
 	try{
 		login($_POST['email'],$_POST['password']);

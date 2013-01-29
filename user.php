@@ -39,7 +39,7 @@ class User {
 		// else
 			// return false;
 			
-		if($)
+
 	}
 
 	function getName () {

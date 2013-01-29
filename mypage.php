@@ -28,13 +28,9 @@
 	   </div>
 
       <div id="content">
-         <?php
-            require_once 'db.php';
-			require_once 'user.php';
-			
+         <?php			
 			
 			?>
-</div>
-      </div>
+		</div>
    </BODY>
 </HTML>

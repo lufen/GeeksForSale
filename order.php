@@ -1,11 +1,11 @@
 <?php
-session_start();
+require_once 'sessionStart.php';
 require_once 'db.php';
 // Check if this is an update of the shoppingbasket, and modify the amounts.
  if(isset($_POST['placed'])){
  	$sql = 'INSERT INTO orders (userID)VALUES (:userID)';
   	$sth = $db->prepare ($sql);
-  	$sth->bindValue (':userID', "1");
+  	$sth->bindValue (':userID', $_SESSION['id']);
   	$sth->execute ();
   	// Get ID of last insert
   	$orderID = $db->lastInsertId();

@@ -1,3 +1,9 @@
+<?php
+require_once 'sessionStart.php';
+if(isset($_GET['logout'])){
+ unset($_SESSION['id']);
+}
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
@@ -10,7 +16,7 @@
             <?php include("topmenu.php"); ?>
    	   	<h1>
                <?php
-                  session_start();
+                  
    			      echo "Geeks for sale!!!";
    		       ?>
             </h1>

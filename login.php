@@ -1,3 +1,15 @@
+<?php
+require_once 'sessionStart.php';
+require_once 'user.php';
+if(isset($_POST['email'])){
+	try{
+		login($_POST['email'],$_POST['password']);
+	}catch(Exception $e){
+		 die ('Wrong username/password : ' . $e->getMessage());
+	}
+}
+//header( 'Location: mypage.php' );
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
@@ -28,12 +40,20 @@
 	   </div>
 
       <div id="content">
-      	<?php
-			require_once 'db.php';
-			require_once 'user.php';
-
-			
-		?>	
+			<form method="post" action="login.php">
+				<h2> Login <small>Enter your credentials</small></h2>
+				<p>
+					<label for="name">Username:</label>
+					<input type="text" name="email" required/>
+				</p>
+				<p>
+					<label for="pwd">Password:</label>
+					<input type="password" name="password" required/>
+				</p>
+				<p>
+					<input type="submit" id="submit" value="Login" name="submit"/>
+				</p>
+			</form>
       </div>
    </BODY>
 </HTML>

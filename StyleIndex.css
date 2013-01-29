@@ -24,13 +24,14 @@ background-color: #D0CBCA;
 
 #content{
 	float: left;
-	height: 2000px;
 	border-radius: 15px;
 	width: 54%;
 	background-color: #F3F2F1;
+	margin-top: 10px;
 	margin-bottom: 10px;
-	margin-left: 15px;
+	margin-left: 20px;
 }
+
 
 h1{  
 	text-align: center;

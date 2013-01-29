@@ -1,4 +1,25 @@
 <?php
+	function login ($email,$password) {
+			require_once "db.php";
+			// $this->email = $_POST['email'];
+			 $sql = 'SELECT * FROM users WHERE email=:email';
+			 $sth = $db->prepare ($sql);
+			 $sth->bindParam (':email', $email);
+			 $sth->execute ();
+			 if ($row = $sth->fetch()) {
+			 	$fromUser = convertPlainTextToEncrypted($password,$row['id']);
+				 echo $row['password'];
+				 echo $fromUser;
+			 	if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
+				 	$_SESSION['id'] = $row['id'];
+				 	//$this->id = $row['id'];
+					header( 'Location: mypage.php' );
+			 	} else
+					echo "Hei";
+					 //$this->error = 'Ukjent brukernavn/passord';
+					//throw exception
+			 }
+	}
 class User {
 	var $email = '';
 	var $id = -1;
@@ -10,40 +31,15 @@ class User {
 	
 	//If a user logs out, the id should be unset
 	
-	
-	function User ($db) {
-		global $_POST, $_SESSION;
-		if (isset ($_POST['email'])) {
-			$password = md5($_POST['password']);
-			$this->email = $_POST['email'];
-			$sql = 'SELECT * FROM users WHERE email=:email AND password=:password';
-			$sth = $db->prepare ($sql);
-			$sth->bindParam (':email', $this->email);
-			$sth->bindParam (':password', $password);
-			$sth->execute ();
-			if ($row = $sth->fetch()) {
-				$_SESSION['id'] = $row['id'];
-				$this->id = $row['id'];
-			} else
-				$this->error = 'Ukjent brukernavn/passord';
-		} else if (isset ($_POST['logout'])) {
-			unset ($_SESSION['id']);
-		} else if (isset ($_SESSION['id'])) {
-			$this->id = $_SESSION['id'];
-			$sql = 'SELECT * FROM users WHERE id=:id';
-			$sth = $db->prepare ($sql);
-			$sth->bindParam (':id', $_SESSION['id']);
-			$sth->execute ();
-			$row = $sth->fetch();
-			$this->email = $row['email'];
-		}
-	}
+
 	
 	function loggedOn () {
-		if ($this->id > -1)
-			return true;
-		else
-			return false;
+		// if ($this->id > -1)
+			// return true;
+		// else
+			// return false;
+			
+		if($)
 	}
 
 	function getName () {

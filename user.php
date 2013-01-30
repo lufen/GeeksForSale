@@ -1,6 +1,6 @@
 <?php
 	function login ($email,$password) {
-			require_once "db.php";
+		require_once "db.php";
 			// $this->email = $_POST['email'];
 			 $sql = 'SELECT * FROM users WHERE email=:email';
 			 $sth = $db->prepare ($sql);
@@ -20,6 +20,48 @@
 					//throw exception
 			 }
 	}
+
+function registerUser($db,$name, $streetAdress,$postCode,$Country, $email, $password){
+	require_once 'sessionStart.php';
+	$db->beginTransaction();
+	$db->query('LOCK TABLES users WRITE');
+	// Add user, then read back and update it with the encrypted one.
+	$sql = 'INSERT INTO users (name, address, email, password, blacklisted, userLevel)VALUES (:name, :address, :email, :password, :blacklisted, :userLevel)';
+	$sth = $db->prepare ($sql);
+	$adress = $streetAdress." ".$postCode." ".$Country;
+	$blacklisted = 0;
+	$userLevel = 0;
+	$sth->bindValue (':name', $name);
+	$sth->bindValue (':address', $adress);
+	$sth->bindValue (':email', $email);
+	$sth->bindValue (':password',"hei");
+	$sth->bindValue (':blacklisted', $blacklisted);
+	$sth->bindValue (':userLevel', $userLevel);
+	$sth->execute ();
+	if($sth->rowCount() == 0){
+	 // In case of error, rollback
+	 $db->rollBack();                     
+	 $db->query ('UNLOCK TABLES'); 
+	 throw new Exception('email not unique');
+	}
+	$uid = $db->lastInsertId();
+	echo "<p>OK<br>";
+	// Update users password to an encrypted one
+	$sql = 'update users set password = :password where id = :id';
+	$sth = $db->prepare ($sql);
+	$sth->bindValue (':password',convertPlainTextToEncrypted($_POST['Password'],$uid));
+	$sth->bindValue (':id',$uid);
+	$sth->execute ();
+	if ($sth->rowCount()==0) {                      
+	 $db->rollBack();                      
+	 $db->query('UNLOCK TABLES');
+	 throw new Exception('Unable to set new password');  
+	}
+	$db->commit();
+	// new user created, then log him in
+	$_SESSION[$uid];
+}
+
 class User {
 	var $email = '';
 	var $id = -1;

@@ -1,43 +1,4 @@
-<<<<<<< HEAD
-<?php
-require_once 'db.php';
 
-if(isset($_SESSION['id'])){
-	header( 'Location: mypage.php' );
-}
-if (isset ($_POST['name'])) {
-      // Add user with a default password, then read back and update it with the encrypted one.
-      $sql = 'INSERT INTO users (name, address, email, password, blacklisted, userLevel)VALUES (:name, :address, :email, :password, :blacklisted, :userLevel)';
-      $sth = $db->prepare ($sql);
-      $adress = $_POST['streetAdress']." ".$_POST['postCode']." ".$_POST['Country'];
-      $blacklisted = 0;
-      $userLevel = 0;
-      $sth->bindValue (':name', $_POST['name']);
-      $sth->bindValue (':address', $adress);
-      $sth->bindValue (':email', $_POST['Email']);
-      $sth->bindValue (':password',"hei");
-      $sth->bindValue (':blacklisted', $blacklisted);
-      $sth->bindValue (':userLevel', $userLevel);
-      $sth->execute ();
-      if($sth->rowCount() === 1){
-         $uid = $db->lastInsertId();
-         echo "<p>OK<br>";
-         // Update users password to an encrypted one
-         $sql = 'update users set password = :password where id = :id';
-         $sth = $db->prepare ($sql);
-         $sth->bindValue (':password',convertPlainTextToEncrypted($_POST['Password'],$uid));
-         $sth->bindValue (':id',$uid);
-         $sth->execute ();
-         // Redirect back to homepage
-         header( 'Location: index.php?reg=yes' );
-      }else{
-         echo "User not made, Email not unique";
-      }
-   }
-?>
-
-=======
->>>>>>> 9bf2e278916d3259c00bd3b61309e430f490f17c
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>

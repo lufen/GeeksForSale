@@ -8,3 +8,4 @@
 - Make pretty
 - make OO
 - Not allow for negativ qty's
+-Masse

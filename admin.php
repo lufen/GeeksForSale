@@ -10,7 +10,7 @@
          header( 'Location: admin.php' );
       }
   }
-  if(isset($_POST['subcategoryName'])){
+  else if(isset($_POST['subcategoryName'])){
     // Get ID of top category
     $sql = 'select id from productcategory where categoryName = :categoryName';
     $sth = $db->prepare($sql);
@@ -30,6 +30,8 @@
         header( 'Location: admin.php' );
       }
     }
+  }else if(isset($_POST['productName'])){
+    echo "hei";
   }
   
 
@@ -65,9 +67,6 @@
 	   </div>
 
      <div id="content">
-         <?php
-            echo "Admin";
-         ?>
          <p> Add a new top category
         <form action="admin.php" method="post">
         <input type="text" name="categoryName" required />
@@ -89,6 +88,23 @@
         </select>
         <input type="text" name="subcategoryName" required />
         <input type="submit" name="submit" value="Add subcategory">
+        </form>
+
+        <p> Add a new product
+        <form action="admin.php" method="post">
+        <select name="subcatory">
+        <?php
+          $sql = 'select name from subcategory';
+          $sth = $db->prepare($sql);
+          $sth->execute();
+          $sth->setFetchMode(PDO::FETCH_ASSOC);  
+          while($row = $sth->fetch()){
+            echo "<option value=\"".$row['name']."\">".$row['name']."</option>";
+          }
+        ?>
+        </select>
+        <input type="text" name="productName" required />
+        <input type="submit" name="submit" value="Add new product">
         </form>
 
 

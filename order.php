@@ -3,7 +3,7 @@ require_once 'sessionStart.php';
 require_once 'db.php';
 // Check if this is an update of the shoppingbasket, and modify the amounts.
  if(isset($_POST['placed'])){
- 	$sql = 'INSERT INTO orders (userID)VALUES (:userID)';
+ 	 $sql = 'INSERT INTO orders (userID)VALUES (:userID)';
   	$sth = $db->prepare ($sql);
   	$sth->bindValue (':userID', $_SESSION['id']);
   	$sth->execute ();
@@ -12,6 +12,8 @@ require_once 'db.php';
   	$ordersplaced = 0;
   	$shouldHaveBeenDone = 0;
  	 foreach ($_SESSION as $key => $quantity){
+    if($key ==="id")
+      break;
  	 	$shouldHaveBeenDone++;
 		// Get price from DB
 		$sqltmp = 'Select * from products where id = :id';

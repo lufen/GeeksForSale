@@ -7,55 +7,55 @@
       <link rel="stylesheet" type="text/css" href="StyleIndex.css"/>
    </HEAD>
    <BODY>
-   	   <div id="header">
-            <?php include("topmenu.php"); ?>
-   	   	<h1>
-               <?php
-   			      echo "Geeks for sale!!!";
-   		       ?>
-            </h1>
-			<s>
-      	    <form class="form-wrapper cf">
-                 <input type="text" placeholder="Search here..." required>
-                 <button type="submit">Search</button>
-      		</form>
-			</s>
-		</div>
-   	   
-	   <div id="menu">
+     <div id="header">
+      <?php include("topmenu.php"); ?>
+      <h1>
          <?php
-         require_once 'menu.php';
+         echo "Geeks for sale!!!";
          ?>
-	   </div>
+      </h1>
+      <s>
+       <form class="form-wrapper cf">
+          <input type="text" placeholder="Search here..." required>
+          <button type="submit">Search</button>
+       </form>
+    </s>
+ </div>
+ 
+ <div id="menu">
+   <?php
+   require_once 'menu.php';
+   ?>
+</div>
 
-      <div id="content">
-         <?php
-            require_once 'user.php';
-            require_once 'db.php';  
-            if (isset ($_POST['name'])) {
-            try{
-               registerUser($db,$_POST['name'], $_POST['streetAdress'],$_POST['postCode'],$_POST['Country'], $_POST['Email'], $_POST['Password']);
+<div id="content">
+   <?php
+   require_once 'user.php';
+   require_once 'db.php';  
+   if (isset ($_POST['name'])) {
+      try{
+         registerUser($db,$_POST['name'], $_POST['streetAdress'],$_POST['postCode'],$_POST['Country'], $_POST['Email'], $_POST['Password']);
                // Redirect back to homepage
-               header( 'Location: mypage.php' );
-            }catch(Exception $e){
-               echo $e->getMessage();
-            }
-            }
-         ?>
-         <form method="post" action="register.php">
-         <label for="name">Name</label>
-            <input type="text" name="name" required  placeholder="John Doe"/><br/>
-         <label for="streetAddress">Street adress</label>
-            <input type="text" name="streetAdress" required/><br/>
-         <label for="postcode">Post code</label>
-            <input type="text" name="postCode" required/><br/>
-         <label for="country">Country</label>
-            <input type="text" name="Country" required/><br/>
-         <label for="Email">Email</label>
-            <input type="email" name="Email" required/><br/>
-         <label for="Password">Password</label>
-            <input type="password" name="Password" required/><br/>
-         <input type="submit" value="Register"/>
-      </div>
-   </BODY>
+         header( 'Location: mypage.php' );
+      }catch(Exception $e){
+         echo $e->getMessage();
+      }
+   }
+   ?>
+   <form method="post" action="register.php">
+      <label for="name">Name</label>
+      <input type="text" name="name" required  placeholder="John Doe"/><br/>
+      <label for="streetAddress">Street adress</label>
+      <input type="text" name="streetAdress" required/><br/>
+      <label for="postcode">Post code</label>
+      <input type="text" name="postCode" required/><br/>
+      <label for="country">Country</label>
+      <input type="text" name="Country" required/><br/>
+      <label for="Email">Email</label>
+      <input type="email" name="Email" required/><br/>
+      <label for="Password">Password</label>
+      <input type="password" name="Password" required/><br/>
+      <input type="submit" value="Register"/>
+   </div>
+</BODY>
 </HTML>

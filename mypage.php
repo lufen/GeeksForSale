@@ -29,7 +29,7 @@
 
       <div id="content">
          <?php			
-			
+			   echo "I am a user, I want to see my orders you damn";
 			?>
 		</div>
    </BODY>

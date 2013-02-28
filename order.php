@@ -13,7 +13,7 @@ require_once 'db.php';
   	$shouldHaveBeenDone = 0;
  	 foreach ($_SESSION as $key => $quantity){
     if($key ==="id")
-      break;
+      continue;
  	 	$shouldHaveBeenDone++;
 		// Get price from DB
 		$sqltmp = 'Select * from products where id = :id';
@@ -32,18 +32,16 @@ require_once 'db.php';
 	  	$sth->bindValue (':qty', $quantity);
 	  	$sth->bindValue (':sendt', "0");
 	  	$ordersplaced += $sth->execute ();
-      unset($_SESSION['key']);
  	 }
- 	 if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0)
+ 	 if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
  	 	echo "Thanks for the order. It will be shipped soon";
- 	 else{
+    emptyBasket();
+ 	 }else{
  	 	echo $ordersplaced;
  	 	echo $shouldHaveBeenDone;
  	 }
-	// Empty shopping basket and return to shopping basket page
-	//session_unset();
-    //header("shoppingbasket.php");
-  }?>
+  }
+  ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">

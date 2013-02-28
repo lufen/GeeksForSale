@@ -1,7 +1,9 @@
 <?php
-session_start();
+require_once 'user.php';
+require_once 'sessionStart.php';
+
 // Check if this is an update of the shoppingbasket, and modify the amounts.
- if(isset($_GET)){
+ if(isset($_GET["hidden"])){
   foreach($_GET as $key => $qty){
     if($qty == 0){
       unset($_SESSION[$key]);
@@ -9,13 +11,8 @@ session_start();
       $_SESSION[$key] = $qty;
     }
   }
- }
- // Allow for deleting the cart
- if(isset($_POST['deleteContent'])){
-  session_unset();
-   echo "Hei";
-  header('Location: '.$_SERVER['REQUEST_URI']);
-
+ } else if(isset($_GET['deleteContent'])){
+    emptyBasket();
  }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -47,6 +44,7 @@ session_start();
       </div>
       <div id="content">
         <form method="get" action="shoppingbasket.php">
+          <input type="hidden" name="hidden" value="1"/>
          <?php 
            echo "Shopping cart";
            $cartPrice = 0;
@@ -79,8 +77,8 @@ session_start();
         <input type="submit" name="submit" value="Buy">
         </form>
 
-       <form action="shoppingbasket.php" method="post">
-         <input type="hidden" name="deleteContent" value="1"/>
+       <form action="shoppingbasket.php" method="get">
+        <input type="hidden" name="deleteContent" value="1"/>
         <input type="submit" name="submit" value="Empty basket">
         </form>
 

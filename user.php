@@ -63,3 +63,14 @@ function registerUser($db,$name, $streetAdress,$postCode,$Country, $email, $pass
 	// new user created, then log him in
 	$_SESSION[$uid];
 }
+
+function emptyBasket(){
+	require_once 'sessionStart.php';
+	// Empty out the shoppingbasket
+	 foreach ($_SESSION as $key => $quantity){
+	    if($key ==="id")
+      		continue;
+      	unset($_SESSION[$key]);
+	 }
+}
+?>

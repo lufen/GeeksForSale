@@ -32,15 +32,16 @@ require_once 'db.php';
 	  	$sth->bindValue (':qty', $quantity);
 	  	$sth->bindValue (':sendt', "0");
 	  	$ordersplaced += $sth->execute ();
+      unset($_SESSION['key']);
  	 }
- 	 if($ordersplaced === $shouldHaveBeenDone)
+ 	 if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0)
  	 	echo "Thanks for the order. It will be shipped soon";
  	 else{
  	 	echo $ordersplaced;
  	 	echo $shouldHaveBeenDone;
  	 }
 	// Empty shopping basket and return to shopping basket page
-	session_unset();
+	//session_unset();
     //header("shoppingbasket.php");
   }?>
 

@@ -61,7 +61,7 @@
          <form method="get" action="productdetails.php">
          <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
          <label for="Quantity">Quantity</label>
-            <input type="number" name="Quantity" required /><br/>
+            <input type="number" name="Quantity"  min="0" required  /><br/>
          <input type="submit" value="Put in cart"/>
       </div>
    </BODY>

@@ -3,7 +3,11 @@ session_start();
 // Check if this is an update of the shoppingbasket, and modify the amounts.
  if(isset($_GET)){
   foreach($_GET as $key => $qty){
-    $_SESSION[$key] = $qty;
+    if($qty == 0){
+      unset($_SESSION[$key]);
+    }else{
+      $_SESSION[$key] = $qty;
+    }
   }
  }
  // Allow for deleting the cart
@@ -47,6 +51,8 @@ session_start();
            echo "Shopping cart";
            $cartPrice = 0;
            foreach ($_SESSION as $key => $quantity){
+            if($quantity < 0)
+              $quantity = 0;
               $sql = "Select name,price from products where id=:id";
               $sth = $db->prepare($sql);
               $sth->bindValue (':id', substr($key,1));

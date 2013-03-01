@@ -45,13 +45,6 @@ if(isset($_GET['logout'])){
    ?>
 </div>
 
-<div id ="sidebarleft">
-	<img src="sidebarleft.jpg">
-</div>
-
-<div id ="sidebarright">
-	<img src="sidebarright.jpg">
-</div>
 
 </BODY>
 </HTML>

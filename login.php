@@ -27,7 +27,7 @@ if(isset($_POST['email'])){
             <?php include("topmenu.php"); ?>
    	   	<h1>
                <?php
-   			      echo "Geeks for sale!!!";
+   			      // echo "Geeks for sale!!!";
    		       ?>
             </h1>
 			<s>

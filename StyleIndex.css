@@ -1,12 +1,18 @@
 body
 {
-background-color: #D0CBCA;
+background-image:url('Background.jpg');
+background-color: #000000;
 }
+
 
 #header{
 	height: 150px;
 	border-radius: 15px;
-	background-color: #F3F2F1;
+	background-color: #ffffff;
+	background-image:url('Geeksforsale.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: .7;
 	margin-bottom: 10px;
 	margin-left: 15%;
 	margin-right: 15%;
@@ -17,7 +23,8 @@ background-color: #D0CBCA;
 	height: 2000px;
 	border-radius: 15px;
 	width: 15%;
-	background-color: #F3F2F1;
+	background-color: #ffffff;
+	opacity: .7;
 	margin-bottom: 10px;
 	margin-left: 15%;
 }
@@ -26,12 +33,12 @@ background-color: #D0CBCA;
 	float: left;
 	border-radius: 15px;
 	width: 54%;
-	background-color: #F3F2F1;
+	background-color: #ffffff;
+	opacity: .7;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 20px;
 }
-
 
 h1{  
 	text-align: center;
@@ -56,6 +63,7 @@ topMenu{
 	margin-left: 60%;
 	margin-top: 33px;
 	text-align: center;
+	
 }
 
 :required {

@@ -17,7 +17,7 @@ if(isset($_GET['logout'])){
       <h1>
          <?php
          
-         echo "Geeks for sale!!!";
+         // echo "Geeks for sale!!!";
          ?>
       </h1>
       <s>
@@ -44,5 +44,7 @@ if(isset($_GET['logout'])){
    echo "Index";
    ?>
 </div>
+
+
 </BODY>
 </HTML>

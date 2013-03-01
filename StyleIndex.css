@@ -1,6 +1,6 @@
 body
 {
-background-image:url('background.jpg');
+background-image:url('Background.jpg');
 background-color: #000000;
 }
 
@@ -9,7 +9,7 @@ background-color: #000000;
 	height: 150px;
 	border-radius: 15px;
 	background-color: #ffffff;
-	background-image:url('geeksforsale.jpg');
+	background-image:url('Geeksforsale.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	opacity: .7;

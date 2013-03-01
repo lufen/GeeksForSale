@@ -8,11 +8,6 @@
    <BODY>
    	   <div id="header">
             <?php include("topmenu.php"); ?>
-   	   	<h1>
-               <?php
-   			      echo "Geeks for sale!!!";
-   		       ?>
-            </h1>
 			<s>
       	    <form class="form-wrapper cf">
                  <input type="text" placeholder="Search here..." required>

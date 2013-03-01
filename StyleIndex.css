@@ -7,7 +7,7 @@ background-color: #000000;
 
 #header{
 	height: 150px;
-	border-radius: 15px;
+	border-radius: 10px;
 	background-color: #ffffff;
 	background-image:url('Geeksforsale.jpg');
 	background-repeat: no-repeat;
@@ -21,7 +21,7 @@ background-color: #000000;
 #menu{
 	float: left;
 	height: 2000px;
-	border-radius: 15px;
+	border-radius: 10px;
 	width: 15%;
 	background-color: #ffffff;
 	opacity: .8;
@@ -31,28 +31,28 @@ background-color: #000000;
 
 #content{
 	float: left;
-	border-radius: 15px;
+	border-radius: 10px;
 	width: 54%;
 	background-color: #ffffff;
 	opacity: .8;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 20px;
+	text-indent: 10px;
 }
 
-h1{  
-	text-align: center;
-	color: #000000;
-}
+
 
 s{
 	position: absolute;
 	margin-top: 5px;
+	text-indent: 10px;
 	margin-left: 0.5%;
 	text-align: left;
 }
 left{  
 	text-align: left;
+	text-indent: 10px;
 	height: 50px;
 	width: 15%;
 	background-color: #666;

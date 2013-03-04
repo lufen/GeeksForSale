@@ -172,4 +172,3 @@ else if(isset($_POST['subcategoryName'])){
 
     </div>
   </BODY>
-</HTML>

@@ -6,5 +6,4 @@
 - Put some products into the DB
 - Make pretty
 - make OO
-- Not allow for negativ qty's
 - Masse

@@ -9,6 +9,7 @@
 			$fromUser = convertPlainTextToEncrypted($password,$row['id']);
 			if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
 				$_SESSION['id'] = $row['id'];
+				$_SESSION['userLevel'] = $row['userLevel'];
 				header( 'Location: mypage.php' );
 			} else{
 				echo "Unknown user/password";
@@ -61,14 +62,15 @@ function registerUser($db,$name, $streetAdress,$postCode,$Country, $email, $pass
 	}
 	$db->commit();
 	// new user created, then log him in
-	$_SESSION[$uid];
+	$_SESSION['id'] = $uid;
+	$_SESSION['userLevel'] =  $userLevel;
 }
 
 function emptyBasket(){
 	require_once 'sessionStart.php';
 	// Empty out the shoppingbasket
 	 foreach ($_SESSION as $key => $quantity){
-	    if($key ==="id")
+	    if($key ==="id" || $key === "userLevel")
       		continue;
       	unset($_SESSION[$key]);
 	 }

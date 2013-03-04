@@ -2,9 +2,11 @@
 - Admin page
 - worker page
 - mypage for users
-- CSS, make some designs
+- CSS, make some designs 
+	- NEED TO MAKE THE CSS PRETTY
 - Put some products into the DB
-- Make pretty
+- Make pretty 
+	- OK
 - make OO
 - Not allow for negativ qty's
 - Masse

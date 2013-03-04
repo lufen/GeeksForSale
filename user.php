@@ -9,6 +9,7 @@
 			$fromUser = convertPlainTextToEncrypted($password,$row['id']);
 			if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
 				$_SESSION['id'] = $row['id'];
+				$_SESSION['userLevel'] = $row['userLevel'];
 				header( 'Location: mypage.php' );
 			} else{
 				echo "Unknown user/password";
@@ -23,18 +24,19 @@ function convertPlainTextToEncrypted($password,$uid){
 	return $hash;
 }
 
-function registerUser($db,$name, $streetAdress,$postCode,$Country, $email, $password){
+function registerUser($db,$name, $streetAdress,$postCode,$country, $email, $password){
 	require_once 'sessionStart.php';
 	$db->beginTransaction();
 	$db->query('LOCK TABLES users WRITE');
 	// Add user, then read back and update it with the encrypted one.
-	$sql = 'INSERT INTO users (name, address, email, password, blacklisted, userLevel)VALUES (:name, :address, :email, :password, :blacklisted, :userLevel)';
+	$sql = 'INSERT INTO users (name, streetAdress,postCode,country, email, password, blacklisted, userLevel)VALUES (:name, :streetAdress,:postCode,:country, :email, :password, :blacklisted, :userLevel)';
 	$sth = $db->prepare ($sql);
-	$adress = $streetAdress." ".$postCode." ".$Country;
 	$blacklisted = 0;
 	$userLevel = 0;
 	$sth->bindValue (':name', $name);
-	$sth->bindValue (':address', $adress);
+	$sth->bindValue (':streetAdress', $streetAdress);
+	$sth->bindValue (':postCode', $postCode);
+	$sth->bindValue (':country', $country);
 	$sth->bindValue (':email', $email);
 	$sth->bindValue (':password',"hei");
 	$sth->bindValue (':blacklisted', $blacklisted);
@@ -61,14 +63,23 @@ function registerUser($db,$name, $streetAdress,$postCode,$Country, $email, $pass
 	}
 	$db->commit();
 	// new user created, then log him in
-	$_SESSION[$uid];
+	$_SESSION['id'] = $uid;
+	$_SESSION['userLevel'] =  $userLevel;
+}
+
+// Check if user logged in, if not then redirect to login page.
+function CheckIfUserLoggedIn(){
+	require_once 'sessionStart.php';
+	if(!isset($_SESSION['id'])){
+		 header( 'Location: index.php' );
+		}
 }
 
 function emptyBasket(){
 	require_once 'sessionStart.php';
 	// Empty out the shoppingbasket
 	 foreach ($_SESSION as $key => $quantity){
-	    if($key ==="id")
+	    if($key ==="id" || $key === "userLevel")
       		continue;
       	unset($_SESSION[$key]);
 	 }

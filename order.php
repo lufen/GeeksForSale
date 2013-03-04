@@ -1,46 +1,45 @@
 <?php
-require_once 'sessionStart.php';
-require_once 'db.php';
-require_once 'user.php';
-// Check if this is an update of the shoppingbasket, and modify the amounts.
-if(isset($_POST['placed'])){
- $sql = 'INSERT INTO orders (userID)VALUES (:userID)';
- $sth = $db->prepare ($sql);
- $sth->bindValue (':userID', $_SESSION['id']);
- $sth->execute ();
-  	// Get ID of last insert
- $orderID = $db->lastInsertId();
- $ordersplaced = 0;
- $shouldHaveBeenDone = 0;
- foreach ($_SESSION as $key => $quantity){
-  if($key ==="id")
-    continue;
-  $shouldHaveBeenDone++;
-		// Get price from DB
-  $sqltmp = 'Select * from products where id = :id';
-  $sthTmp = $db->prepare ($sqltmp);
-  $sthTmp->bindValue(':id',substr($key,1));
-  $sthTmp->execute ();
-  $sthTmp->setFetchMode(PDO::FETCH_ASSOC);  
-  $row = $sthTmp->fetch();
-  $price = $row['price'];
-
-  $sql = 'INSERT INTO orderdetail (orderID, productID, price, qty, sendt)VALUES (:orderID, :productID, :price, :qty, :sendt)';
+// Returns NULL on order placed, else returns 1
+function OrderPlaced(){
+  require 'sessionStart.php';
+  require 'db.php';
+  require 'user.php';
+  $sql = 'INSERT INTO orders (userID)VALUES (:userID)';
   $sth = $db->prepare ($sql);
-  $sth->bindValue (':orderID', $orderID);
-  $sth->bindValue (':productID', substr($key,1));
-  $sth->bindValue (':price', $price);
-  $sth->bindValue (':qty', $quantity);
-  $sth->bindValue (':sendt', "0");
-  $ordersplaced += $sth->execute ();
-}
-if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
-  echo "Thanks for the order. It will be shipped soon";
-  emptyBasket();
-}else{
-  echo $ordersplaced;
-  echo $shouldHaveBeenDone;
-}
+  $sth->bindValue (':userID', $_SESSION['id']);
+  $sth->execute ();
+  	// Get ID of last insert
+  $orderID = $db->lastInsertId();
+  $ordersplaced = 0;
+  $shouldHaveBeenDone = 0;
+  foreach ($_SESSION as $key => $quantity){
+    if($key ==="id"|| $key === "userLevel")
+      continue;
+    $shouldHaveBeenDone++;
+		// Get price from DB
+    $sqltmp = 'Select * from products where id = :id';
+    $sthTmp = $db->prepare ($sqltmp);
+    $sthTmp->bindValue(':id',substr($key,1));
+    $sthTmp->execute ();
+    $sthTmp->setFetchMode(PDO::FETCH_ASSOC);  
+    $row = $sthTmp->fetch();
+    $price = $row['price'];
+
+    $sql = 'INSERT INTO orderdetail (orderID, productID, price, qty, sendt)VALUES (:orderID, :productID, :price, :qty, :sendt)';
+    $sth = $db->prepare ($sql);
+    $sth->bindValue (':orderID', $orderID);
+    $sth->bindValue (':productID', substr($key,1));
+    $sth->bindValue (':price', $price);
+    $sth->bindValue (':qty', $quantity);
+    $sth->bindValue (':sendt', "0");
+    $ordersplaced += $sth->execute ();
+  }
+  if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
+    return NULL;
+    emptyBasket();
+  }else{
+    return 1;
+  }
 }
 ?>
 
@@ -54,7 +53,7 @@ if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
 <BODY>
  <div id="header">
   <?php include("topmenu.php"); ?>
- <s>
+  <s>
    <form class="form-wrapper cf">
      <input type="text" placeholder="Search here..." required>
      <button type="submit">Search</button>
@@ -68,6 +67,16 @@ if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
  ?>
 </div>
 <div id="content">
+ <?php
+ if(isset($_POST['placed'])){
+  if(OrderPlaced() === NULL){
+    echo "<p> Thanks for your order";
+  }else{
+    echo "Order failed, code monkeys working on it";
+  }
+}
+
+?>
 </div>
 </BODY>
 </HTML>

@@ -75,6 +75,22 @@ function CheckIfUserLoggedIn(){
 		}
 }
 
+// Check that an admin is logged in
+function CheckIfAdminLoggedIn(){
+	require_once 'sessionStart.php';
+	if($_SESSION['userLevel'] != 2){
+		 header( 'Location: index.php' );
+		}
+}
+
+// Check that a worker is logged in
+function CheckIfWorkerLoggedIn(){
+	require_once 'sessionStart.php';
+	if($_SESSION['userLevel'] != 1){
+		 header( 'Location: index.php' );
+		}
+}
+
 function emptyBasket(){
 	require_once 'sessionStart.php';
 	// Empty out the shoppingbasket

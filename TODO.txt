@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 - Login for users, admins and workers
 - Admin page
 - worker page
@@ -10,14 +9,4 @@
 	- OK
 - make OO
 - Not allow for negativ qty's
-=======
-- Login for users, admins and workers
-- Admin page
-- worker page
-- mypage for users
-- CSS, make some designs
-- Put some products into the DB
-- Make pretty
-- make OO
->>>>>>> c8cc0fab3edce4fa6a80806eac8e0b1adcb3fa8e
 - Masse

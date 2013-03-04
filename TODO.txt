@@ -1,9 +1,14 @@
 - Login for users, admins and workers
 - Admin page
+    -Legge til admins og workers
+- Endre passord
+
 - worker page
-- mypage for users
+    - Sende ordre
 - CSS, make some designs
-- Put some products into the DB
 - Make pretty
-- make OO
+
+- _make OO_
 - Masse
+
+- Register workers and administrators

@@ -31,17 +31,19 @@ else if(isset($_POST['subcategoryName'])){
     }
   }
 }else if(isset($_POST['productName'])){
-  file_get_contents("php://input");
   if(isset($_FILES['picturefn']))
   {
-    echo "picturefn set ", __LINE__;
+//    echo "picturefn set ", __LINE__;
     $picture = $_FILES['picturefn'];
-    if(!empty($picture));
+    if(!empty($picture))
     {
+      echo "picture was not empty\n", __LINE__;
+      /*
       echo "Upload: " . $_FILES["picturefn"]["name"] . "<br>";
       echo "Type: " . $_FILES["picturefn"]["type"] . "<br>";
       echo "Size: " . ($_FILES["picturefn"]["size"] / 1024) . " kB<br>";
       echo "Stored in: " . $_FILES["picturefn"]["tmp_name"];
+      */
       $ip = $_SERVER['REMOTE_ADDR'];
 //      copy($picture, "./temporary/".$ip."");
       $filename1 = $_FILES["picturefn"]["tmp_name"];
@@ -50,22 +52,29 @@ else if(isset($_POST['subcategoryName'])){
       fclose($fp1);
       $encoded = chunk_split(base64_encode($content1));
     }
+    else
+    {
+      echo "picture was empty\n", __LINE__;
+    }
   
     $sql = 'select id from subcategory where name = :subcategoryName';
     $sth = $db->prepare($sql);
     $sth->bindValue(':subcategoryName', $_POST['subcategory']);
     $sth->execute();
     $sth->setFetchMode(PDO::FETCH_ASSOC);
-
+    echo "found subcategory\n";
     if($sth->rowCount() === 1)
     {
+      echo "there was only 1 subcategory\n";
       $row = $sth->fetch();
       $id = $row['id'];
-      $sql = 'INSERT INTO products (price, picture, name, info, onStock, forSale, rabatt, categoriid)
-             values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
+//      $sql = 'INSERT INTO products (price, picture, name, info, onStock, forSale, rabatt, categoriid)
+//             values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
+      $sql = 'INSERT INTO products values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
       $sth2 = $db->prepare($sql);
-      echo "\n";
-      var_dump($_POST);
+      echo "sql statement: ".$sql;
+      echo "Binding values\n";
+      //var_dump($_POST);
       $sth2->bindValue(':price', $_POST['price']);
       $sth2->bindValue(':picture', $encoded);
       $sth2->bindValue(':name', $_POST['productName']);
@@ -74,6 +83,7 @@ else if(isset($_POST['subcategoryName'])){
       $sth2->bindValue(':forSale', $_POST['forSale']);
       $sth2->bindValue(':rabatt', $_POST['rabatt']);
       $sth2->bindValue(':categoriid', $id);
+      echo "Trying to execute sql\n";
       if($sth2->execute())
       {
         header('Location: admin.php');
@@ -160,14 +170,16 @@ else if(isset($_POST['subcategoryName'])){
         <input type="file" name="picturefn" required="required"><br>
         <label for="info">Information about the product</label>
         <input type="text" name="info" required="required"/><br>
-        <label for="onStock">Number of that producs for sale</label>
+        <label for="onStock">Number of that product for sale</label>
         <input type="number" name="onStock" required="required"/><br>
-        <label for="forSale">Is this product at a reduced price? 1 for yes, 0 for no</label>
+        <label for="forSale">Is this product for sale? 1 for yes, 0 for no</label>
         <input type="bool" name=forSale required="required"><br>
         <label for="rabatt">Discount in percentage.</label>
         <input type="number" name=rabatt required="required"><br>
         <input type="submit" name="submit" value="Add new product">
       </form>
+
+
 
 
     </div>

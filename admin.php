@@ -104,8 +104,6 @@ else if(isset($_POST['subcategoryName'])){
         <input type="text" name="productName" required />
         <input type="submit" name="submit" value="Add new product">
       </form>
-
-
     </div>
   </BODY>
 </HTML>

@@ -68,9 +68,9 @@ else if(isset($_POST['subcategoryName'])){
       echo "there was only 1 subcategory\n";
       $row = $sth->fetch();
       $id = $row['id'];
-//      $sql = 'INSERT INTO products (price, picture, name, info, onStock, forSale, rabatt, categoriid)
-//             values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
-      $sql = 'INSERT INTO products values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
+      $sql = 'INSERT INTO products (price, picture, name, info, onStock, forSale, rabatt, categoriid)
+             values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
+//      $sql = 'INSERT INTO products values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
       $sth2 = $db->prepare($sql);
       echo "sql statement: ".$sql;
       echo "Binding values\n";
@@ -84,7 +84,9 @@ else if(isset($_POST['subcategoryName'])){
       $sth2->bindValue(':rabatt', $_POST['rabatt']);
       $sth2->bindValue(':categoriid', $id);
       echo "Trying to execute sql\n";
-      if($sth2->execute())
+      $result = $sth2->execute();
+      echo $result;
+      if($result)
       {
         header('Location: admin.php');
       }

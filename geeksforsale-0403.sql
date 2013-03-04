@@ -162,8 +162,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `streetAdress`, `postCode`, `country`, `email`, `password`, `blacklisted`, `userLevel`) VALUES
-(20, 'fgh', 'fgh', 0, 'fgh', 'admin@admin.admin', 'c60db472b7338d9ab2857269fa368af04db30f61', 0, 0),
-(21, 'dg', 'dg', 0, 'dfg', 'worker@worker.worker', 'ed401efd9ab025062bc9391071939e219722d412', 0, 0),
+(20, 'fgh', 'fgh', 0, 'fgh', 'admin@admin.admin', 'c60db472b7338d9ab2857269fa368af04db30f61', 0, 2),
+(21, 'dg', 'dg', 0, 'dfg', 'worker@worker.worker', 'ed401efd9ab025062bc9391071939e219722d412', 0, 1),
 (22, 'dfgd', 'dfg', 0, 'dfg', 'user.user@user', 'b3fc11b958cc03363d4f9d17901fa62e53a7ef92', 0, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

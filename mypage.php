@@ -1,4 +1,6 @@
 <?php
+require 'user.php';
+CheckIfUserLoggedIn();
 // Find all orders for a user, and all products in that order. Put into a div of their own.
 function FindOrders(){
   require 'sessionStart.php';
@@ -33,6 +35,7 @@ function FindOrders(){
      echo " price: ".$row2['price'];
      echo " Shipped: ".$row2['sendt'];    
      $price += (intval($row2['price']) * intval($row2['qty'])); 
+     echo "</br>";
    }
    echo "</br>Total price: ".$price." USD";
    echo "</div>";
@@ -71,11 +74,12 @@ function FindOrders(){
 </div>
 
 <div id="content">
+  <button> <a href="mypage-changeinfo.php"> Update your contact info </a> </button></br>
  <?php			
  echo "I am a user, I want to see my orders you damn";
+
  FindOrders();
  ?>
 </div>
 </BODY>
-
 </HTML>

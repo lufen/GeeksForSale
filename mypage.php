@@ -1,5 +1,5 @@
 <?php
-// Returns NULL on order placed, else returns 1
+// Find all orders for a user, and all products in that order. Put into a div of their own.
 function FindOrders(){
   require 'sessionStart.php';
   require 'db.php';

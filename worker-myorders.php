@@ -93,7 +93,6 @@ function SendOrder(){
     }
     $db->commit();
     $db->exec('UNLOCK TABLES');
-    header( 'Location: worker-myorders.php' );
   }
   catch(Exception $e){
     return $e->getMessage();

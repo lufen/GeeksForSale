@@ -12,7 +12,6 @@ function OrderPlaced(){
   $sth->execute ();
   	// Get ID of last insert
   $orderID = $db->lastInsertId();
-  echo $orderID;
   $ordersplaced = 0;
   $shouldHaveBeenDone = 0;
   foreach ($_SESSION as $key => $quantity){
@@ -37,10 +36,9 @@ function OrderPlaced(){
     $sth->bindValue (':qty', $quantity);
     $sth->bindValue (':sendt', "0");
     $ordersplaced += $sth->execute ();
-    echo $ordersplaced;
   }
   if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
-    //emptyBasket();
+    emptyBasket();
     return NULL;
   }else{
     echo $ordersplaced." ".$shouldHaveBeenDone;

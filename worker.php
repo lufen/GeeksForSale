@@ -36,11 +36,11 @@ function OrderNotYetShipped(){
       }
 
       // Only allow to take an order if there is enough on stock
-      //if(intval($row2['qty']) < intval($row3['onStock'])){
+      if(intval($row2['qty']) < intval($row3['onStock'])){
         echo '<form action="worker.php" method="post">';
         echo "<input type=\"hidden\" name=\"order\" value=".$orderID."/>";
         echo '<input type="submit" name="submit" value="Take order"></form>';
-      //}
+      }
       echo "</div>";
     }
 }

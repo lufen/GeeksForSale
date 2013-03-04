@@ -13,7 +13,7 @@ function OrderPlaced(){
   $ordersplaced = 0;
   $shouldHaveBeenDone = 0;
   foreach ($_SESSION as $key => $quantity){
-    if($key ==="id"|| $key === "userLevel")
+    if($key ==="id"|| $key === "userLevel" || $key === "hidden")
       continue;
     $shouldHaveBeenDone++;
 		// Get price from DB

@@ -2,7 +2,7 @@
 require_once 'db.php';
 
 if(isset($_POST['categoryName'])){
-    // Add a new top category
+  // Add a new top category
   $sql = 'INSERT into productcategory (categoryName) values (:categoryName)';
   $sth = $db->prepare($sql);
   $sth->bindValue (':categoryName', $_POST['categoryName']);
@@ -10,8 +10,9 @@ if(isset($_POST['categoryName'])){
    header( 'Location: admin.php' );
  }
 }
+
 else if(isset($_POST['subcategoryName'])){
-    // Get ID of top category
+  // Add new sub category
   $sql = 'select id from productcategory where categoryName = :categoryName';
   $sth = $db->prepare($sql);
   $sth->bindValue (':categoryName', $_POST['category']);
@@ -30,63 +31,43 @@ else if(isset($_POST['subcategoryName'])){
       header( 'Location: admin.php' );
     }
   }
+ 
 }else if(isset($_POST['productName'])){
+   // Add new product
   if(isset($_FILES['picturefn']))
   {
-//    echo "picturefn set ", __LINE__;
     $picture = $_FILES['picturefn'];
     if(!empty($picture))
     {
-      echo "picture was not empty\n", __LINE__;
-      /*
-      echo "Upload: " . $_FILES["picturefn"]["name"] . "<br>";
-      echo "Type: " . $_FILES["picturefn"]["type"] . "<br>";
-      echo "Size: " . ($_FILES["picturefn"]["size"] / 1024) . " kB<br>";
-      echo "Stored in: " . $_FILES["picturefn"]["tmp_name"];
-      */
       $ip = $_SERVER['REMOTE_ADDR'];
-//      copy($picture, "./temporary/".$ip."");
       $filename1 = $_FILES["picturefn"]["tmp_name"];
       $fp1 = fopen($filename1, "r");
       $content1 = fread($fp1, filesize($filename1));
       fclose($fp1);
       $encoded = chunk_split(base64_encode($content1));
-    }
-    else
-    {
-      echo "picture was empty\n", __LINE__;
-    }
-  
+    }  
     $sql = 'select id from subcategory where name = :subcategoryName';
     $sth = $db->prepare($sql);
     $sth->bindValue(':subcategoryName', $_POST['subcategory']);
     $sth->execute();
     $sth->setFetchMode(PDO::FETCH_ASSOC);
-    echo "found subcategory\n";
     if($sth->rowCount() === 1)
     {
-      echo "there was only 1 subcategory\n";
       $row = $sth->fetch();
       $id = $row['id'];
-//      $sql = 'INSERT INTO products (price, picture, name, info, onStock, forSale, rabatt, categoriid)
-//             values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
-      $sql = 'INSERT INTO products values (:price, :picture, :name, :info, :onStock, :forSale, :rabatt, :categoriid)';
+      $sql = 'INSERT INTO products (price, pictures, name, info, onStock, forSale, rabatt, categoriId) values (:price, :pictures, :name, :info, :onStock, :forSale, :rabatt, :categoriId)';
       $sth2 = $db->prepare($sql);
-      echo "sql statement: ".$sql;
-      echo "Binding values\n";
-      //var_dump($_POST);
       $sth2->bindValue(':price', $_POST['price']);
-      $sth2->bindValue(':picture', $encoded);
+      $sth2->bindValue(':pictures', $encoded);
       $sth2->bindValue(':name', $_POST['productName']);
       $sth2->bindValue(':info', $_POST['info']);
       $sth2->bindValue(':onStock', $_POST['onStock']);
       $sth2->bindValue(':forSale', $_POST['forSale']);
       $sth2->bindValue(':rabatt', $_POST['rabatt']);
-      $sth2->bindValue(':categoriid', $id);
-      echo "Trying to execute sql\n";
-      if($sth2->execute())
-      {
-        header('Location: admin.php');
+      $sth2->bindValue(':categoriId', $id);
+      $sth2->execute();
+      if($sth2->rowCount() === 1){
+        echo "Added OK";
       }
     }
   }

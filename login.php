@@ -1,20 +1,3 @@
-<?php
-require_once 'sessionStart.php';
-require_once 'user.php';
-
-if(isset($_SESSION['id'])){
-		header( 'Location: mypage.php' );
-}
-	
-if(isset($_POST['email'])){
-	try{
-		login($_POST['email'],$_POST['password']);
-	}catch(Exception $e){
-		 die ('Wrong username/password : ' . $e->getMessage());
-	}
-}
-//header( 'Location: mypage.php' );
-?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
@@ -41,6 +24,21 @@ if(isset($_POST['email'])){
 	   </div>
 
       <div id="content">
+			<?php
+			require 'sessionStart.php';
+			require 'user.php';
+
+			if(isset($_SESSION['id'])){
+				header( 'Location: mypage.php' );
+			}
+
+			if(isset($_POST['email'])){
+				if(login($_POST['email'],$_POST['password']) == NULL){
+					echo "Wrong username or password";
+				}
+			}
+			//header( 'Location: mypage.php' );
+			?>
 			<form method="post" action="login.php">
 				<h2> Login <small>Enter your credentials</small></h2>
 				<p>
@@ -55,6 +53,8 @@ if(isset($_POST['email'])){
 					<input type="submit" id="submit" value="Login" name="submit"/>
 				</p>
 			</form>
+
+
       </div>
    </BODY>
 </HTML>

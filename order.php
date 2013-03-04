@@ -13,7 +13,7 @@ function OrderPlaced(){
   $ordersplaced = 0;
   $shouldHaveBeenDone = 0;
   foreach ($_SESSION as $key => $quantity){
-    if($key ==="id"|| $key === "userLevel")
+    if((substr($key,0,1) != "p"))
       continue;
     $shouldHaveBeenDone++;
 		// Get price from DB
@@ -35,8 +35,8 @@ function OrderPlaced(){
     $ordersplaced += $sth->execute ();
   }
   if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
-    return NULL;
     emptyBasket();
+    return NULL;
   }else{
     return 1;
   }

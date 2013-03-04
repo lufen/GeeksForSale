@@ -1,3 +1,8 @@
+<?php
+require 'user.php';
+CheckIfWorkerLoggedIn();
+?>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 <HTML>
@@ -25,7 +30,19 @@
 
 <div id="content">
    <?php
-   echo "Worker page";
+   echo "<p>Orders not shipped or taken yet";
+    require "db.php";
+    
+    $sql = 'SELECT * FROM orders WHERE workerID is null';
+    $sth = $db->prepare ($sql);
+    $sth->bindParam (':email', $email);
+    $sth->execute ();
+    while($row = $sth->fetch()){
+      $orderID = $row['id'];
+      echo "<div id=order>";
+      echo "<p>Order: ".$orderID."</br>";
+      echo "</div>";
+    }
    ?>
 </div>
 </BODY>

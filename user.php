@@ -1,6 +1,6 @@
 <?php
 	function login ($email,$password) {
-		require_once "db.php";
+		require "db.php";
 		$sql = 'SELECT * FROM users WHERE email=:email';
 		$sth = $db->prepare ($sql);
 		$sth->bindParam (':email', $email);
@@ -12,7 +12,7 @@
 				$_SESSION['userLevel'] = $row['userLevel'];
 				header( 'Location: mypage.php' );
 			} else{
-				echo "Unknown user/password";
+				return NULL;
 			}
 		}
 	}
@@ -71,6 +71,22 @@ function registerUser($db,$name, $streetAdress,$postCode,$country, $email, $pass
 function CheckIfUserLoggedIn(){
 	require_once 'sessionStart.php';
 	if(!isset($_SESSION['id'])){
+		 header( 'Location: index.php' );
+		}
+}
+
+// Check that an admin is logged in
+function CheckIfAdminLoggedIn(){
+	require_once 'sessionStart.php';
+	if($_SESSION['userLevel'] != 2){
+		 header( 'Location: index.php' );
+		}
+}
+
+// Check that a worker is logged in
+function CheckIfWorkerLoggedIn(){
+	require_once 'sessionStart.php';
+	if($_SESSION['userLevel'] != 1){
 		 header( 'Location: index.php' );
 		}
 }

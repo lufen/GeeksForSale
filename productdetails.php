@@ -51,7 +51,11 @@ if (isset ($_GET['Quantity'])) {
       echo "Price: ".$row['price']."<br>";
       echo "Details: ".$row['info']."<br>";
       echo "In stock: ".$row['onStock']."<br>";  
-      echo "Discount: ".$row['rabatt']."<br>";    
+      echo "Discount: ".$row['rabatt']."<br>";
+      $data = $row['pictures'];
+//      echo "picture looks like this: ".$row['pictures']."<br>";
+      echo '<img src="data:image/png;base64,'.$data.'" />';
+
    }
    ?>
    <form method="get" action="productdetails.php">

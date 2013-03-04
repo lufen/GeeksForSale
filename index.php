@@ -1,7 +1,7 @@
 <?php
 require_once 'sessionStart.php';
 if(isset($_GET['logout'])){
-  unset($_SESSION['id']);
+  session_unset();
 }
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"

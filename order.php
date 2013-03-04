@@ -33,11 +33,13 @@ function OrderPlaced(){
     $sth->bindValue (':qty', $quantity);
     $sth->bindValue (':sendt', "0");
     $ordersplaced += $sth->execute ();
-  }
+  }var_dump($_SESSION);
   if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
     emptyBasket();
     return NULL;
   }else{
+    echo $ordersplaced." ".$shouldHaveBeenDone;
+    
     return 1;
   }
 }

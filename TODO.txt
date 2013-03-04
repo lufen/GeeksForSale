@@ -6,8 +6,10 @@
 
 - worker page
     - Sende ordre
-- CSS, make some designs
-- Make pretty
+
+
+- CSS, make some designs, make pretty
+	- WORKING ON IT!
 
 - _make OO_
 - Masse

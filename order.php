@@ -4,18 +4,22 @@ function OrderPlaced(){
   require 'sessionStart.php';
   require 'db.php';
   require 'user.php';
-  $sql = 'INSERT INTO orders (userID)VALUES (:userID)';
+  $sql = 'INSERT INTO orders (userID,workerID,shipped)VALUES (:userID,:workerID,:shipped)';
   $sth = $db->prepare ($sql);
   $sth->bindValue (':userID', $_SESSION['id']);
+  $sth->bindValue (':workerID',null);
+  $sth->bindValue (':shipped',0);
   $sth->execute ();
   	// Get ID of last insert
   $orderID = $db->lastInsertId();
+  echo $orderID;
   $ordersplaced = 0;
   $shouldHaveBeenDone = 0;
   foreach ($_SESSION as $key => $quantity){
     if((substr($key,0,1) != "p"))
       continue;
     $shouldHaveBeenDone++;
+
 		// Get price from DB
     $sqltmp = 'Select * from products where id = :id';
     $sthTmp = $db->prepare ($sqltmp);
@@ -33,9 +37,10 @@ function OrderPlaced(){
     $sth->bindValue (':qty', $quantity);
     $sth->bindValue (':sendt', "0");
     $ordersplaced += $sth->execute ();
-  }var_dump($_SESSION);
+    echo $ordersplaced;
+  }
   if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
-    emptyBasket();
+    //emptyBasket();
     return NULL;
   }else{
     echo $ordersplaced." ".$shouldHaveBeenDone;

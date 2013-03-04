@@ -54,7 +54,7 @@ function registerUser($db,$name, $streetAdress,$postCode,$Country, $email, $pass
 	$sth = $db->prepare ($sql);
 	$sth->bindValue (':password',convertPlainTextToEncrypted($_POST['Password'],$uid));
 	$sth->bindValue (':id',$uid);
-	$sth->execute ();
+	$sth->execute ();''
 	if ($sth->rowCount()==0) {                      
 	 $db->rollBack();                      
 	 $db->query('UNLOCK TABLES');

@@ -1,6 +1,6 @@
 <?php
 	function login ($email,$password) {
-		require_once "db.php";
+		require "db.php";
 		$sql = 'SELECT * FROM users WHERE email=:email';
 		$sth = $db->prepare ($sql);
 		$sth->bindParam (':email', $email);
@@ -12,7 +12,7 @@
 				$_SESSION['userLevel'] = $row['userLevel'];
 				header( 'Location: mypage.php' );
 			} else{
-				echo "Unknown user/password";
+				return NULL;
 			}
 		}
 	}

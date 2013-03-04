@@ -59,7 +59,7 @@ if(isset($_GET["hidden"])){
         echo "<input type=\"number\" name=\"$key\" value=$quantity min=\"0\"/> ";
         $linePrice = $row['price']*$quantity;
         $cartPrice +=$linePrice;
-        echo "Line: ".$linePrice;
+        echo "Price: ".$linePrice;
         echo "<br>";
       }
     }

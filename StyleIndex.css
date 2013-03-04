@@ -21,7 +21,8 @@ background-color: #000000;
 	margin-right: 15%;
 	text-indent: 10px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 #menu{
@@ -34,7 +35,8 @@ background-color: #000000;
 	margin-bottom: 10px;
 	margin-left: 15%;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 #content{
@@ -48,7 +50,8 @@ background-color: #000000;
 	margin-left: 0.5%;
 	text-indent: 10px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 #order{
@@ -61,7 +64,8 @@ background-color: #000000;
 	margin-left: 0.5%;
 	text-indent: 10px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 
@@ -73,7 +77,8 @@ s{
 	text-indent: 10px;
 	margin-bottom: 10px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 left{  
 	text-align: left;
@@ -83,7 +88,8 @@ left{
 	text-indent: 10px;
 	margin-bottom: 10px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 topMenu{  
@@ -94,7 +100,8 @@ topMenu{
 	text-align: center;
 	margin-bottom: 10px;
 	padding-left: 10px;
-	padding-top: 10px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 :required {

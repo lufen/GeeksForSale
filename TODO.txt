@@ -1,7 +1,3 @@
-
-- Login for users, admins and workers
-	- DOESN'T THIS WORK?
-
 - Admin page
     -Legge til admins og workers
 - Endre passord

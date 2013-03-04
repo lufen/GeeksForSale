@@ -33,8 +33,6 @@ else if(isset($_POST['subcategoryName'])){
 }else if(isset($_POST['productName'])){
   echo "hei";
 }
-
-
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"

@@ -26,7 +26,10 @@ function OrderPlaced(){
     $sthTmp->execute ();
     $sthTmp->setFetchMode(PDO::FETCH_ASSOC);  
     $row = $sthTmp->fetch();
-    $price = $row['price'];
+    if(intval($row['rabatt']) != 0)
+      $price = intval($row['price'])*(intval($row['rabatt'])/100);
+    else
+      $price = $row['price'];
 
     $sql = 'INSERT INTO orderdetail (orderID, productID, price, qty, sendt)VALUES (:orderID, :productID, :price, :qty, :sendt)';
     $sth = $db->prepare ($sql);

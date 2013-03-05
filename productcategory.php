@@ -34,8 +34,12 @@
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
    echo "<br>";
    while($row = $sth->fetch()){
-      if($row['forSale'] != "0")
-         echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> Price: ".$row['price']." In Stock: ".$row['onStock']."<br>";
+      if($row['forSale'] != "0"){
+          if(intval($row['rabatt'])!= 0)
+           echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> Price: $".intval($row['price'])*(intval($row['rabatt'])/100)." In Stock: ".$row['onStock']."<br>";
+         else
+          echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> Price: $".$row['price']." In Stock: ".$row['onStock']."<br>";
+       }
    }
    ?>
 </div>

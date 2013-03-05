@@ -41,7 +41,7 @@ function FindOrders(){
      $rowPro = $sthPro->fetch();
      echo "Product: <a href=\"productdetails.php?id=".$row2['productID']."\">".$rowPro['name']."</a><br>";
      echo " qty: ".$row2['qty'];
-     echo " price: ".$row2['price'];
+     echo " price: $".$row2['price'];
      echo " Shipped: ";
      if(intval($row2['sendt']) === 0){
       echo "Not shipped";

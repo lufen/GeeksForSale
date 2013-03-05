@@ -106,6 +106,8 @@ include 'Geeksforsaletop.php';
 ?>
 
 <div id="content">
-  <?php include 'admin-buttons.php'; ?>
+  <?php 
+  include 'admin-buttons.php'; 
+  ?>
   </div>
 </BODY>

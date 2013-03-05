@@ -20,7 +20,7 @@ $sth->execute();
 $sth->setFetchMode(PDO::FETCH_ASSOC);
     // only add if we only found one category
 while($row = $sth->fetch()){
-    // Only show the orders wanted
+      // Only show the orders wanted
   if($shipped == 1 && intval($row['shipped']) != 1)
     continue;
   else if($shipped == 0 && intval($row['shipped']) != 0)
@@ -29,8 +29,8 @@ while($row = $sth->fetch()){
   $price = 0;
   $orderID = $row['id'];
   echo "<div id=order>";
-  echo "<p>Order: ".$orderID."</br>";
-   // Find details of order
+  echo "<t1>Order: ".$orderID."</br></t1>";
+     // Find details of order
   $sql2 = 'select * from orderdetail where orderID = :id';
   $sth2 = $db->prepare($sql2);
   $sth2->bindValue (':id', $orderID);
@@ -43,20 +43,21 @@ while($row = $sth->fetch()){
    $sthPro->execute();
    $sthPro->setFetchMode(PDO::FETCH_ASSOC);
    $rowPro = $sthPro->fetch();
-   echo "Product: <a href=\"productdetails.php?id=".$row2['productID']."\">".$rowPro['name']."</a><br>";
-   echo " qty: ".$row2['qty'];
-   echo " price: $".$row2['price'];
-   echo " Shipped: ";
+   echo "<t3>Product: <a href=\"productdetails.php?id=".$row2['productID']."\">".$rowPro['name']."</a><br></t3>";
+   echo "<t3>qty: ".$row2['qty']."</t3>   ";
+   echo "<t3>Price: $".$row2['price']."</t3></br>";
+   echo "<t3>Shipped: ";
    if(intval($row2['sendt']) === 0){
     echo "Not shipped";
   }else{
     echo "Shipped";
   }
+  echo "</t3>";
 
   $price += (intval($row2['price']) * intval($row2['qty'])); 
   echo "</br>";
 }
-echo "</br>Total price: $".$price."</br>";
+echo "Total price: $".$price;
 
 if(intval($row['shipped']) === 0){
   echo'<form method="post" action="mypage-orders.php">';
@@ -71,19 +72,19 @@ echo "</div>";
 function deleteOrder(){
   require 'db.php';
   try{
-  // Delete from orders
-  $sql = 'DELETE from orders where id = :id AND shipped=0';
-  $sth = $db->prepare($sql);
-  $sth->bindValue (':id', $_POST['orderID']);
-  $sth->execute();
-  // Delete from orderdetails
-  $sql = 'DELETE from orderdetail where orderID = :id AND sendt=0';
-  $sth = $db->prepare($sql);
-  $sth->bindValue (':id', $_POST['orderID']);
-  $sth->execute();
-}catch (Exception $e){
-  echo $e->getMessage();
-}
+    // Delete from orders
+    $sql = 'DELETE from orders where id = :id AND shipped=0';
+    $sth = $db->prepare($sql);
+    $sth->bindValue (':id', $_POST['orderID']);
+    $sth->execute();
+    // Delete from orderdetails
+    $sql = 'DELETE from orderdetail where orderID = :id AND sendt=0';
+    $sth = $db->prepare($sql);
+    $sth->bindValue (':id', $_POST['orderID']);
+    $sth->execute();
+  }catch (Exception $e){
+    echo $e->getMessage();
+  }
 }
 ?>
 

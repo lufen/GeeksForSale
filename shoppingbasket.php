@@ -39,7 +39,7 @@ if(isset($_GET["hidden"])){
     foreach ($_SESSION as $key => $quantity){
       if($quantity < 0)
         $quantity = 0;
-      $sql = "Select name,price from products where id=:id";
+      $sql = "Select name,price,rabatt from products where id=:id";
       $sth = $db->prepare($sql);
       $sth->bindValue (':id', substr($key,1));
       $sth->execute();
@@ -48,9 +48,13 @@ if(isset($_GET["hidden"])){
 
               // Print out each row in the basket
       while($row = $sth->fetch()){
-        echo "<p>Name: ".$row['name']." Price: ".$row['price']." Qty: ";
+        if(intval($row['rabatt']) != 0)
+          $price = intval($row['price'])*(intval($row['rabatt'])/100);
+        else
+          $price = $row['price'];
+        echo "<p>Name: ".$row['name']." Price: ".$price." Qty: ";
         echo "<input type=\"number\" name=\"$key\" value=$quantity min=\"0\"/> ";
-        $linePrice = $row['price']*$quantity;
+        $linePrice = $price*$quantity;
         $cartPrice +=$linePrice;
         echo "Price: ".$linePrice;
         echo "<br>";

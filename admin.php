@@ -1,7 +1,6 @@
 <?php
 require_once "user.php";
 require_once 'db.php';
-
 CheckIfAdminLoggedIn();
 
 if(isset($_POST['categoryName'])){
@@ -103,13 +102,10 @@ else if(isset($_POST['username']))
 
 <?php
 include 'Geeksforsaletop.php';
+
 ?>
 
 <div id="content">
-  <button> <a href="admin-addUser.php"> Add user        </a> </button>
-  <button> <a href="admin-addProducts.php"> Add product        </a> </button>
-  <button> <a href="admin-addCategories.php"> Add Category        </a> </button>
-  <button> <a href="admin-blackListUsers.php"> Blacklist a user        </a> </button>
-  <button> <a href="admin-changeProduct.php"> Edit a product        </a> </button></br>
+  <?php include 'admin-buttons.php'; ?>
   </div>
 </BODY>

@@ -4,6 +4,8 @@ function OrderPlaced(){
   require 'sessionStart.php';
   require 'db.php';
   require 'user.php';
+    if(isUserBlacklisted() == true)
+      throw new Exception('User is blacklisted');
   $sql = 'INSERT INTO orders (userID,workerID,shipped)VALUES (:userID,:workerID,:shipped)';
   $sth = $db->prepare ($sql);
   $sth->bindValue (':userID', $_SESSION['id']);

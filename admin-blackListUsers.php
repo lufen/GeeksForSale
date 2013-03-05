@@ -70,6 +70,7 @@ function findUser(){
 include 'Geeksforsaletop.php';
 ?>
 <div id="content">
+	<?php include 'admin-buttons.php'; ?>
 	<?php
 	require 'db.php';
 	if (isset ($_POST['userID'])) {

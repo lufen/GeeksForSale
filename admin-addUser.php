@@ -6,6 +6,7 @@ include 'Geeksforsaletop.php';
 ?>
 
 <div id= "content">
+	<?php include 'admin-buttons.php'; ?>
 <p>Add user<br>
   <form action="admin.php" method="post"
   enctype="multipart/form-data">

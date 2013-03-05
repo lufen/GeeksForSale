@@ -1,12 +1,11 @@
-
 <?php
+require_once "db.php"
 require_once "user.php";
 CheckIfAdminLoggedIn();
-include 'Geeksforsaletop.php';
 ?>
 
+<?php include 'Geeksforsaletop.php'; ?>
 <div id= "content">
-	<?php include 'admin-buttons.php'; ?>
 <p>Add user<br>
   <form action="admin.php" method="post"
   enctype="multipart/form-data">

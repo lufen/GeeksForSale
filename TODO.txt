@@ -3,7 +3,7 @@
 - Endre passord
 
 - worker page
-    - Sende ordre
+    - Sende ordre ( Some what working )
 
 
 - CSS, make some designs, make pretty

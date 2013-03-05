@@ -1,5 +1,6 @@
 - Admin page
     -Endre og slette varer og varekategorier
+    - Addproduct page looks funny
 - Users
     - endre egne ordre som ikke er sendt
 

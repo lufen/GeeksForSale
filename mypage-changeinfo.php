@@ -7,9 +7,9 @@ function UpdateUserInfo(){
 		$db->beginTransaction();
 		$db->query('LOCK TABLES users WRITE');
 	// Add user, then read back and update it with the encrypted one.
-		$sql = 'UPDATE users set name=?, streetAdress=?,postCode=?,country=?, email=? where id=?';
+		$sql = 'UPDATE users set name=?, streetAddress=?,postCode=?,country=?, email=? where id=?';
 		$sth = $db->prepare ($sql);
-		$affected_rows = $sth->execute (array($_POST['name'],$_POST['streetAdress'],$_POST['postCode'],$_POST['Country'],$_POST['Email'],$_SESSION['id']));
+		$affected_rows = $sth->execute (array($_POST['name'],$_POST['streetAddress'],$_POST['postCode'],$_POST['Country'],$_POST['Email'],$_SESSION['id']));
 		if($affected_rows != 1){
 		// Should only change for one user at the time
 			$db->rollBack();                      
@@ -65,7 +65,7 @@ function UpdateUserInfo(){
 				?>
 				<input type="text" name="name" required  value ="<?php echo $row['name'];?>"/><br/>
 				<label for="streetAddress">Street adress</label>
-				<input type="text" name="streetAdress" required value="<?php echo $row['streetAdress'];?>"/><br/>
+				<input type="text" name="streetAddress" required value="<?php echo $row['streetAddress'];?>"/><br/>
 				<label for="postcode">Post code</label>
 				<input type="text" name="postCode" required value="<?php echo $row['postCode'];?>"/><br/>
 				<label for="country">Country</label>

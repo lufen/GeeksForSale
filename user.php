@@ -24,17 +24,17 @@ function convertPlainTextToEncrypted($password,$uid){
 	return $hash;
 }
 
-function registerUser($db,$name, $streetAdress,$postCode,$country, $email, $password){
+function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $password){
 	require_once 'sessionStart.php';
 	$db->beginTransaction();
 	$db->query('LOCK TABLES users WRITE');
 	// Add user, then read back and update it with the encrypted one.
-	$sql = 'INSERT INTO users (name, streetAdress,postCode,country, email, password, blacklisted, userLevel)VALUES (:name, :streetAdress,:postCode,:country, :email, :password, :blacklisted, :userLevel)';
+	$sql = 'INSERT INTO users (name, streetAddress,postCode,country, email, password, blacklisted, userLevel)VALUES (:name, :streetAddress,:postCode,:country, :email, :password, :blacklisted, :userLevel)';
 	$sth = $db->prepare ($sql);
 	$blacklisted = 0;
 	$userLevel = 0;
 	$sth->bindValue (':name', $name);
-	$sth->bindValue (':streetAdress', $streetAdress);
+	$sth->bindValue (':streetAddress', $streetAddress);
 	$sth->bindValue (':postCode', $postCode);
 	$sth->bindValue (':country', $country);
 	$sth->bindValue (':email', $email);

@@ -106,6 +106,7 @@ else if(isset($_POST['subcategoryName'])){
 </div>
 
 <div id="content">
+  
  <p> Add a new top category
   <form action="admin.php" method="post">
     <input type="text" name="categoryName" required />
@@ -143,10 +144,10 @@ else if(isset($_POST['subcategoryName'])){
           }
           ?>
         </select><br><br>
-        <label for="name">Name</label>
+        <label for="productName">Name</label>
         <input type="text" name="productName" required="required"/><br>
         <label for=price>Price</label>
-        <input type="number" name = "price" required="required"/><br>
+        <input type="number" name="price" required="required"/><br>
         <label for=picture>Picture</label>
         <input type="file" name="picturefn" required="required"><br>
         <label for="info">Information about the product</label>
@@ -159,6 +160,12 @@ else if(isset($_POST['subcategoryName'])){
         <input type="number" name=rabatt required="required"><br>
         <input type="submit" name="submit" value="Add new product">
       </form>
+
+      <p> Add user <br>
+        <form action="admin.php" method="post"
+        enctype="multipart/form-data">
+          <label for="username">Username</label>
+          <input type="text" name=""
 
 
 

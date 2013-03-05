@@ -30,7 +30,7 @@
    require_once 'db.php';  
    if (isset ($_POST['name'])) {
       try{
-         registerUser($db,$_POST['name'], $_POST['streetAdress'],$_POST['postCode'],$_POST['Country'], $_POST['Email'], $_POST['Password']);
+         registerUser($db,$_POST['name'], $_POST['streetAddress'],$_POST['postCode'],$_POST['Country'], $_POST['Email'], $_POST['Password']);
                // Redirect back to homepage
          header( 'Location: mypage.php' );
       }catch(Exception $e){
@@ -42,7 +42,7 @@
       <label for="name">Name</label>
       <input type="text" name="name" required  placeholder="John Doe"/><br/>
       <label for="streetAddress">Street adress</label>
-      <input type="text" name="streetAdress" required/><br/>
+      <input type="text" name="streetAddress" required/><br/>
       <label for="postcode">Post code</label>
       <input type="text" name="postCode" required/><br/>
       <label for="country">Country</label>

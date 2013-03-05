@@ -74,16 +74,27 @@ echo "</div>";
 function deleteOrder(){
   require 'db.php';
   try{
+    $db->beginTransaction();
+    $db->query('LOCK TABLES orders WRITE');
     // Delete from orders
-    $sql = 'DELETE from orders where id = :id AND shipped=0';
+    $sql = 'DELETE from orders where id = :id AND shipped=0 AND userID=:userID';
     $sth = $db->prepare($sql);
     $sth->bindValue (':id', $_POST['orderID']);
-    $sth->execute();
+    $sth->bindValue (':userID', $_SESSION['id']);
+    $affected_rows = $sth->execute();
+    if($affected_rows != 1){
+      // Verify only one order affected
+      $db->rollBack();                     
+      $db->query ('UNLOCK TABLES'); 
+      throw new Exception('Order not deleted');
+    } 
     // Delete from orderdetails
+    $db->query('LOCK TABLES orderdetail WRITE');
     $sql = 'DELETE from orderdetail where orderID = :id AND sendt=0';
     $sth = $db->prepare($sql);
     $sth->bindValue (':id', $_POST['orderID']);
     $sth->execute();
+    $db->commit();
   }catch (Exception $e){
     echo $e->getMessage();
   }
@@ -98,7 +109,12 @@ include 'Geeksforsaletop.php';
   <?php include 'mypage-buttons.php'; ?>
   <?php			
   if(isset($_POST['orderID'])){
-    deleteOrder();
+    try{
+      deleteOrder();
+    }catch(Exception $e){
+      echo $e->getMessage();
+    }
+    
   }
   FindOrders();
 

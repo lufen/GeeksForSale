@@ -3,8 +3,6 @@
     -Legge til admins og workers
     -Endre og slette varer og varekategorier
 
-- Customer page
-    - Navigere i vareutvalg ved hjelp av søk
 - CSS, make some designs
 - Make pretty
 

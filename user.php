@@ -6,9 +6,6 @@
 		$sth->bindParam (':email', $email);
 		$sth->execute ();
 		if ($row = $sth->fetch()) {
-			if($row['blacklisted']!= 0){
-				throw new Exception(' Not logged in, user blacklisted');
-			}
 			$fromUser = convertPlainTextToEncrypted($password,$row['id']);
 			if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
 				$_SESSION['id'] = $row['id'];
@@ -96,6 +93,21 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	// new user created, then log him in
 	$_SESSION['id'] = $uid;
 	$_SESSION['userLevel'] =  $userLevel;
+}
+
+function isUserBlacklisted(){
+	require "db.php";
+		$sql = 'SELECT * FROM users WHERE id=:id';
+		$sth = $db->prepare ($sql);
+		$sth->bindParam (':id', $_SESSION['id']);
+		$sth->execute ();
+		if ($row = $sth->fetch()) {
+			if($row['blacklisted'] == 0)
+				return false;
+			else
+				return true;
+		}else
+			return true;
 }
 
 // Check if user,worker or admin logged in, if not then redirect to login page.

@@ -2,7 +2,8 @@
 include 'Geeksforsaletop.php';
 ?> 
 
- <p> Add a new top category
+<div = "content">
+	 <p> Add a new top category
   <form action="admin.php" method="post">
     <input type="text" name="categoryName" required />
     <input type="submit" name="submit" value="Add top category">
@@ -24,3 +25,5 @@ include 'Geeksforsaletop.php';
       <input type="text" name="subcategoryName" required />
       <input type="submit" name="submit" value="Add subcategory">
     </form>
+	
+</div>

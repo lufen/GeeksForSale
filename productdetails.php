@@ -9,6 +9,7 @@ if (isset ($_GET['Quantity'])) {
    }else{
       $_SESSION[$key] = $_GET['Quantity'];
    }
+   header( 'Location: shoppingbasket.php' );
 }
 ?>
 

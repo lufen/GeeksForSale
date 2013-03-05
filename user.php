@@ -31,16 +31,14 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	// Add user, then read back and update it with the encrypted one.
 	$sql = 'INSERT INTO users (name, streetAddress,postCode,country, email, password, blacklisted, userLevel)VALUES (:name, :streetAddress,:postCode,:country, :email, :password, :blacklisted, :userLevel)';
 	$sth = $db->prepare ($sql);
-	$blacklisted = 0;
-	$userLevel = 0;
 	$sth->bindValue (':name', $name);
 	$sth->bindValue (':streetAddress', $streetAddress);
 	$sth->bindValue (':postCode', $postCode);
 	$sth->bindValue (':country', $country);
 	$sth->bindValue (':email', $email);
 	$sth->bindValue (':password',"hei");
-	$sth->bindValue (':blacklisted', $blacklisted);
-	$sth->bindValue (':userLevel', $userLevel);
+	$sth->bindValue (':blacklisted', 0);
+	$sth->bindValue (':userLevel', 0);
 	$sth->execute ();
 	if($sth->rowCount() == 0){
 	 // In case of error, rollback

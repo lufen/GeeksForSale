@@ -33,7 +33,13 @@ function FindOrders(){
      echo "Product: <a href=\"productdetails.php?id=".$row2['productID']."\">".$rowPro['name']."</a><br>";
      echo " qty: ".$row2['qty'];
      echo " price: ".$row2['price'];
-     echo " Shipped: ".$row2['sendt'];    
+     echo " Shipped: ";
+     if(intval($row2['sendt']) === 0){
+      echo "Not shipped";
+     }else{
+      echo "Shipped";
+     }
+      
      $price += (intval($row2['price']) * intval($row2['qty'])); 
      echo "</br>";
    }
@@ -54,11 +60,6 @@ function FindOrders(){
 <BODY>
  <div id="header">
   <?php include("topmenu.php"); ?>
-  <h1>
-   <?php
-   echo "Geeks for sale!!!";
-   ?>
- </h1>
  <s>
    <form class="form-wrapper cf">
      <input type="text" placeholder="Search here..." required>
@@ -75,11 +76,9 @@ function FindOrders(){
 
 <div id="content">
   <button> <a href="mypage-changeinfo.php"> Update your contact info </a> </button></br>
- <?php			
- echo "I am a user, I want to see my orders you damn";
-
- FindOrders();
- ?>
+   <?php			
+   FindOrders();
+   ?>
 </div>
 </BODY>
 </HTML>

@@ -38,8 +38,9 @@
 				}catch(Exception $e){
 					echo $e->getMessage();
 				}
+				header( 'Location: mypage.php' );
 			}
-			//header( 'Location: mypage.php' );
+
 			?>
 			<form method="post" action="login.php">
 				<h2> Login <small>Enter your credentials</small></h2>

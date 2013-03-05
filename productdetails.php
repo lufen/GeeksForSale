@@ -9,6 +9,7 @@ if (isset ($_GET['Quantity'])) {
    }else{
       $_SESSION[$key] = $_GET['Quantity'];
    }
+   header( 'Location: shoppingbasket.php' );
 }
 ?>
 
@@ -22,7 +23,6 @@ if (isset ($_GET['Quantity'])) {
    <BODY>
      <div id="header">
       <?php include("topmenu.php"); ?>
-
       <s>
        <form class="form-wrapper cf">
           <input type="text" placeholder="Search here..." required>

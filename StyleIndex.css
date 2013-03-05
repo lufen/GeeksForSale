@@ -92,11 +92,11 @@ button {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-
-#fb-like{
-	
+#fb{
+	position: absolute;
+	left: 45%;
+	bottom: 0px;
 }
-
 #user{
 	border-radius: 10px;
 	background-color: #FFE9E5;

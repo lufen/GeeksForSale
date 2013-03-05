@@ -22,7 +22,8 @@ include 'Geeksforsaletop.php';
 ?>
 
 <div id="content">
-  <a href="worker-myorders.php">Show my orders</a><br>
+  <button> <a href="worker-myorders.php"> My orders </a> </button>
+  <button> <a href="worker.php"> Orders not taken </a> </button>
    <?php
    echo "<p>Orders not shipped or taken yet";
    OrderNotYetShipped();

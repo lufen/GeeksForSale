@@ -47,16 +47,9 @@ function OrderPlaced(){
   }
 }
 ?>
-
 <?php
 include 'Geeksforsaletop.php';
 ?>
-
-<div id="menu">
- <?php
- require_once 'menu.php';
- ?>
-</div>
 <div id="content">
  <?php
  if(isset($_POST['placed'])){
@@ -67,7 +60,6 @@ include 'Geeksforsaletop.php';
     echo $e->getMessage();
   }
 }
-
 ?>
 </div>
 </BODY>

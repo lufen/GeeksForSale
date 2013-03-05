@@ -7,6 +7,7 @@ if(isset($_GET['logout'])){
 <?php
 include 'Geeksforsaletop.php';
 ?>
-
+<div id="content">
+</div>
 </BODY>
 </HTML>

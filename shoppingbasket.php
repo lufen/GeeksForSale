@@ -34,7 +34,7 @@ if(isset($_GET["hidden"])){
   <form method="get" action="shoppingbasket.php">
     <input type="hidden" name="hidden" value="1"/>
     <?php 
-    echo "Shopping cart";
+    echo "<t0>Shopping cart</t0></br>";
     $cartPrice = 0;
     foreach ($_SESSION as $key => $quantity){
       if($quantity < 0)
@@ -50,16 +50,16 @@ if(isset($_GET["hidden"])){
           $price = intval($row['price'])*(intval($row['rabatt'])/100);
         else
           $price = $row['price'];
-        echo "<p>Name: ".$row['name']." Price: ".$price." Qty: ";
+        echo "<t2>Name: </t2>".$row['name']."</br> <t2>Price per: </t2>$".$price." <t2>Qty: </t2>";
         echo "<input type=\"number\" name=\"$key\" value=$quantity min=\"0\"/> ";
         $linePrice = $price*$quantity;
         $cartPrice +=$linePrice;
-        echo "Price: ".$linePrice;
+        echo "<t2>Sub Total: </t2>$".$linePrice;
         echo "<br>";
       }
     }
     echo "<br>";
-    echo "Total price: ".$cartPrice."<br>";
+    echo "<t1>Total price: </t1>$".$cartPrice."<br>";
     ?>
     <input type="submit" value="Change quantities"/>
   </form>

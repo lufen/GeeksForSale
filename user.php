@@ -6,6 +6,9 @@
 		$sth->bindParam (':email', $email);
 		$sth->execute ();
 		if ($row = $sth->fetch()) {
+			if($row['blacklisted']!= 0){
+				throw new Exception(' Not logged in, user blacklisted');
+			}
 			$fromUser = convertPlainTextToEncrypted($password,$row['id']);
 			if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
 				$_SESSION['id'] = $row['id'];

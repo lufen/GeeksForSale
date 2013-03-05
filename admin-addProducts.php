@@ -1,3 +1,8 @@
+<?php
+include 'Geeksforsaletop.php';
+?> 
+
+<div id= "content">
     <p> <br>Add a new product to
       <form action="admin.php" method="post"
       enctype="multipart/form-data">
@@ -28,3 +33,4 @@
         <input type="number" name=rabatt required="required" min=0 max=99><br>
         <input type="submit" name="submit" value="Add new product">
       </form>
+</div>

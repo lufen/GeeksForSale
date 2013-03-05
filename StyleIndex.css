@@ -42,7 +42,6 @@ background-attachment: fixed;
 }
 
 #content{
-	button.background-color: #66CCCC;
 	float: left;
 	border-radius: 10px;
 	width: 53.3%;
@@ -73,6 +72,17 @@ background-attachment: fixed;
 }
 
 #product{
+	border-radius: 10px;
+	background-color: #FFAAFF;
+	margin-bottom: 10px;
+	margin-left: 0.5%;
+	margin-right: 20.5%;
+	text-indent: 10px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#user{
 	border-radius: 10px;
 	background-color: #FFAAFF;
 	margin-bottom: 10px;

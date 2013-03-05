@@ -51,7 +51,7 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	// Update users password to an encrypted one
 	$sql = 'update users set password = :password where id = :id';
 	$sth = $db->prepare ($sql);
-	$sth->bindValue (':password',convertPlainTextToEncrypted($_POST['Password'],$uid));
+	$sth->bindValue (':password',convertPlainTextToEncrypted($password,$uid));
 	$sth->bindValue (':id',$uid);
 	$sth->execute ();
 	if ($sth->rowCount()==0) {                      

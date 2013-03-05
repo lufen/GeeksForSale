@@ -83,7 +83,7 @@ function deleteOrder(){
     $sth->bindValue (':userID', $_SESSION['id']);
     $affected_rows = $sth->execute();
     if($affected_rows != 1){
-      // Verify only one order affected
+      // Verify only one order affected and that it is yours
       $db->rollBack();                     
       $db->query ('UNLOCK TABLES'); 
       throw new Exception('Order not deleted');

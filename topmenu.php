@@ -16,6 +16,11 @@
 		echo "<a href=\"register.php\">Register</a><br>";
 	}
 	?>
-	
+  	<s>
+       <form class="form-wrapper cf" method="post" action="search.php">
+          <input type="text" name="search" placeholder="Search here..." required>
+          <button type="submit">Search</button>
+       </form>
+    </s>
 	<a href="shoppingbasket.php">Shopping Basket</a><br>
 </topMenu>

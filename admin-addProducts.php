@@ -2,7 +2,7 @@
 include 'Geeksforsaletop.php';
 ?> 
 
-<div = "content">
+<div id= "content">
     <p> <br>Add a new product to
       <form action="admin.php" method="post"
       enctype="multipart/form-data">

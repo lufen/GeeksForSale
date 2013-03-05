@@ -3,7 +3,7 @@
 include 'Geeksforsaletop.php';
 ?>
 
-<div = "content">
+<div id= "content">
 <p>Add user<br>
   <form action="admin.php" method="post"
   enctype="multipart/form-data">

@@ -43,6 +43,7 @@ while($row = $sth->fetch()){
    $sthPro->execute();
    $sthPro->setFetchMode(PDO::FETCH_ASSOC);
    $rowPro = $sthPro->fetch();
+   echo "------</br>"; 
    echo "<t3>Product: <a href=\"productdetails.php?id=".$row2['productID']."\">".$rowPro['name']."</a><br></t3>";
    echo "<t3>qty: ".$row2['qty']."</t3>   ";
    echo "<t3>Price: $".$row2['price']."</t3></br>";
@@ -57,6 +58,7 @@ while($row = $sth->fetch()){
   $price += (intval($row2['price']) * intval($row2['qty'])); 
   echo "</br>";
 }
+echo "------</br>"; 
 echo "Total price: $".$price;
 
 if(intval($row['shipped']) === 0){

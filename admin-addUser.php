@@ -1,3 +1,7 @@
+
+<?php
+include 'Geeksforsaletop.php';
+?>
 <p>Add user<br>
   <form action="admin.php" method="post"
   enctype="multipart/form-data">

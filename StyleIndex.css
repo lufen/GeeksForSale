@@ -42,7 +42,6 @@ background-attachment: fixed;
 }
 
 #content{
-	button.background-color: #66CCCC;
 	float: left;
 	border-radius: 10px;
 	width: 53.3%;

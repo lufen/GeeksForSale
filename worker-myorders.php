@@ -3,36 +3,10 @@ require 'user.php';
 
 CheckIfWorkerLoggedIn();
 function MyOrderNotShippedYet(){
-  require 'db.php';
+  require 'worker-common.php';
     // Find all orders that I own that are not yet shipped
   $sql = 'SELECT * FROM orders WHERE workerID =:id AND shipped = 0';
-  $sth = $db->prepare ($sql);
-  $sth->bindParam (':id', $_SESSION['id']);
-  $sth->execute ();
-  while($row = $sth->fetch()){
-    $orderID = $row['id'];
-    echo "<div id=order>";
-    echo "<p>Order: ".$orderID."</br>";
-    $sql = 'SELECT * FROM orderdetail WHERE orderID=:id';
-    $sth2 = $db->prepare ($sql);
-    $sth2->bindParam (':id', $orderID);
-    $sth2->execute ();
-    while($row2 = $sth2->fetch()){
-      $sql = 'SELECT * FROM products WHERE id=:id';
-      $sthPro = $db->prepare ($sql);
-      $sthPro->bindParam (':id', $row2['productID']);
-      $sthPro->execute ();
-      $row3 = $sthPro->fetch();
-      echo "</br>";
-      echo "Product: ".$row2['productID']."Name: ".$row3['name']."</br>";
-      echo "Qty: ".$row2['qty']." In stock: ".$row3['onStock'];
-      echo "</br>";
-    }
-    echo '<form action="worker-myorders.php" method="post">';
-    echo "<input type=\"hidden\" name=\"order\" value=".$orderID." />";
-    echo '<input type="submit" name="submit" value="Ship"></form>';
-    echo "</div>";
-  }
+  commonWorkerSearch($sql); 
 }
 function SendOrder(){
 // Mark order as shipped
@@ -40,7 +14,7 @@ function SendOrder(){
   try{
     $db->beginTransaction();
     
-    // Set each orderline as shipped
+    // Get all orderlines
     $db->exec('LOCK TABLES orderdetail WRITE');
     $sql = 'select lineID,productID,qty from orderdetail where orderID=:id';
     $sthLine = $db->prepare ($sql);
@@ -48,13 +22,6 @@ function SendOrder(){
     $sthLine->execute ();
     
     while($row = $sthLine->fetch()){
-      // Mark orderline as sent
-      $sql = 'Update orderdetail set sendt=1 where lineID=:lineID';
-      $tmpSTH = $db->prepare ($sql);
-      $tmpSTH->bindParam (':lineID', $row['lineID']);
-      $db->exec('LOCK TABLES orderdetail WRITE');
-      $tmpSTH->execute ();
-
       // Get old amount
       $db->exec('LOCK TABLES products WRITE');
       $sql = 'select onStock from products where id=:id';
@@ -69,6 +36,22 @@ function SendOrder(){
         throw new Exception('Not enough in stock');  
       }
 
+      // Update amount of each product in stock
+      $db->exec('LOCK TABLES products WRITE');
+      $sql = 'Update products set onStock=:qtyLeft where id=:productID';
+      $updateSTH = $db->prepare ($sql);
+      $updateSTH->bindParam (':productID', $row['productID']);
+      $left =  intval($tmpRow['onStock']) - intval($row['qty']);
+      $updateSTH->bindParam (':qtyLeft',$left);
+      $updateSTH->execute ();
+
+      // Mark orderline as sent
+      $sql = 'Update orderdetail set sendt=1 where lineID=:lineID';
+      $tmpSTH = $db->prepare ($sql);
+      $tmpSTH->bindParam (':lineID', $row['lineID']);
+      $db->exec('LOCK TABLES orderdetail WRITE');
+      $tmpSTH->execute ();
+
       // Mark order as shipped
       $db->exec('LOCK TABLES orders WRITE');
       $sql = 'UPDATE orders set shipped=1 where id=:orderID';
@@ -81,22 +64,15 @@ function SendOrder(){
         $db->rollBack();
         throw new Exception('Order not found');  
       }
-
-      // Update amount of each product in stock
-      $db->exec('LOCK TABLES products WRITE');
-      $sql = 'Update products set onStock=:qtyLeft where id=:productID';
-      $updateSTH = $db->prepare ($sql);
-      $updateSTH->bindParam (':productID', $row['productID']);
-      $left =  intval($tmpRow['onStock']) - intval($row['qty']);
-      $updateSTH->bindParam (':qtyLeft',$left);
-      $updateSTH->execute ();
     }
     $db->commit();
-    $db->exec('UNLOCK TABLES');
+    header( 'Location: worker-myorders.php' );
   }
   catch(Exception $e){
     return $e->getMessage();
+    $db->rollBack();
     $db->query ('UNLOCK TABLES');
+    throw new Exception('Something whent wrong, Not enough in stock');  
   }
 }
 ?>

@@ -17,19 +17,9 @@
 </div>
 <div id="content">
    <?php
-   $id = $_GET['id'];
-   $sql = "Select * from subcategory where id=:id";
+   $sql = "Select * from products where name like '%:search%' OR id=:search";
    $sth = $db->prepare($sql);
-   $sth->bindValue (':id', $id);
-   $sth->execute();
-   $sth->setFetchMode(PDO::FETCH_ASSOC);  
-   $row = $sth->fetch();
-   echo $row['name']."<br>";
-   echo "Products in this category: ";
-
-   $sql = "Select * from products where categoriID=:id";
-   $sth = $db->prepare($sql);
-   $sth->bindValue (':id', $id);
+   $sth->bindValue (':search', $_POST['search']);
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
    echo "<br>";

@@ -9,13 +9,6 @@
    <BODY>
      <div id="header">
       <?php include("topmenu.php"); ?>
-
-      <s>
-       <form class="form-wrapper cf">
-          <input type="text" placeholder="Search here..." required>
-          <button type="submit">Search</button>
-       </form>
-    </s>
  </div>
  
  <div id="menu">

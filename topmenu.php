@@ -10,6 +10,7 @@
 		}else if($_SESSION['userLevel'] == 2){
 			echo "<a href=\"admin.php\">My Admin Page</a><br>";
 		}
+		echo "<a href=\"changePassword.php\">Change Password</a><br>";
 	}else{
 		echo "<a href=\"login.php\">Log in</a><br>";
 		echo "<a href=\"register.php\">Register</a><br>";

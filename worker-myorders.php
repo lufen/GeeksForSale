@@ -6,7 +6,7 @@ function MyOrderNotShippedYet(){
   require 'worker-common.php';
     // Find all orders that I own that are not yet shipped
   $sql = 'SELECT * FROM orders WHERE workerID =:id AND shipped = 0';
-  commonWorkerSearch($sql); 
+  commonWorkerSearch($sql,1); 
 }
 function SendOrder(){
 // Mark order as shipped

@@ -1,5 +1,5 @@
 <?php
-function commonWorkerSearch($sql){
+function commonWorkerSearch($sql,$ship=0){
 	require 'db.php';
 	$sth = $db->prepare ($sql);
 	$sth->bindParam (':id', $_SESSION['id']);
@@ -29,10 +29,14 @@ function commonWorkerSearch($sql){
 			}
 		}
      	// Only allow to take an order if there is enough on stock
-		if($gotWhatWeNeed != 0){
+		if($gotWhatWeNeed != 0 && $ship != 1){
 			echo '<form action="worker.php" method="post">';
 			echo "<input type=\"hidden\" name=\"order\" value=".$orderID."/>";
 			echo '<input type="submit" name="submit" value="Take order"></form>';
+		}else if($gotWhatWeNeed != 0 && $ship ===1){
+			echo '<form action="worker-myorders.php" method="post">';
+			echo "<input type=\"hidden\" name=\"order\" value=".$orderID."/>";
+			echo '<input type="submit" name="submit" value="Ship order"></form>';
 		}
 		echo "</div>";
 	}

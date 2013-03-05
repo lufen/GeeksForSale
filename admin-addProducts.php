@@ -1,4 +1,6 @@
 <?php
+require_once "user.php";
+CheckIfAdminLoggedIn();
 include 'Geeksforsaletop.php';
 ?> 
 

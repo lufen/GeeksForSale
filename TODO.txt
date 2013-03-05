@@ -2,11 +2,6 @@
 - Admin page
     -Legge til admins og workers
     -Endre og slette varer og varekategorier
-    
-- Endre passord
-
-- worker page
-    - Sende ordre ( Some what working )
 
 - Customer page
     - Navigere i vareutvalg ved hjelp av søk

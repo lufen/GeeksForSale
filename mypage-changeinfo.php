@@ -7,10 +7,6 @@ function UpdateUserInfo(){
 		try{
 		$db->beginTransaction();
 		$db->query('LOCK TABLES users WRITE');
-	// Add user, then read back and update it with the encrypted one.
-		$sql = 'UPDATE users set name=?, streetAddress=?,postCode=?,country=?, email=? where id=?';
-		$sth = $db->prepare ($sql);
-		$affected_rows = $sth->execute (array($_POST['name'],$_POST['streetAddress'],$_POST['postCode'],$_POST['Country'],$_POST['Email'],$_SESSION['id']));
 		// Add user, then read back and update it with the encrypted one.
 		$sql = 'UPDATE users set name=:name, streetAddress=:streetAddress,postCode=:postCode,country=:country, email=:email where id=:id';
 		$sth = $db->prepare ($sql);

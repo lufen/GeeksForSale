@@ -1,7 +1,6 @@
-- Login for users, admins and workers
 - Admin page
-    -Legge til admins og workers
     -Endre og slette varer og varekategorier
+
 
 - CSS, make some designs
 - Make pretty

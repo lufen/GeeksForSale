@@ -38,6 +38,7 @@ function UpdateUserInfo(){
 include 'Geeksforsaletop.php';
 ?>
 		<div id="content">
+			<?php include 'mypage-buttons.php'; ?>
 			<?php 
 			try{
 				UpdateUserInfo();

@@ -2,6 +2,8 @@
 <?php
 include 'Geeksforsaletop.php';
 ?>
+
+<div id= "content">
 <p>Add user<br>
   <form action="admin.php" method="post"
   enctype="multipart/form-data">
@@ -21,3 +23,4 @@ include 'Geeksforsaletop.php';
     <input type="number" name="userLevel" required="required" min=0 max=2/><br>
     <input type="submit" name="submit" value="Add new user">
   </form>
+ </div>

@@ -1,4 +1,9 @@
- <p> Add a new top category
+<?php
+include 'Geeksforsaletop.php';
+?> 
+
+<div id= "content">
+	 <p> Add a new top category
   <form action="admin.php" method="post">
     <input type="text" name="categoryName" required />
     <input type="submit" name="submit" value="Add top category">
@@ -20,3 +25,5 @@
       <input type="text" name="subcategoryName" required />
       <input type="submit" name="submit" value="Add subcategory">
     </form>
+	
+</div>

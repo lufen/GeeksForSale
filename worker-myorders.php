@@ -67,7 +67,6 @@ function SendOrder(){
       }
     }
     $db->commit();
-    header( 'Location: worker-myorders.php' );
   }
   catch(Exception $e){
     return $e->getMessage();

@@ -44,9 +44,7 @@ if(isset($_GET["hidden"])){
       $sth->bindValue (':id', substr($key,1));
       $sth->execute();
       $sth->setFetchMode(PDO::FETCH_ASSOC);  
-      echo "<br>";
-
-              // Print out each row in the basket
+      // Print out each row in the basket
       while($row = $sth->fetch()){
         if(intval($row['rabatt']) != 0)
           $price = intval($row['price'])*(intval($row['rabatt'])/100);
@@ -60,6 +58,7 @@ if(isset($_GET["hidden"])){
         echo "<br>";
       }
     }
+    echo "<br>";
     echo "Total price: ".$cartPrice."<br>";
     ?>
     <input type="submit" value="Change quantities"/>

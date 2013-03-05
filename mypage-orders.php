@@ -57,7 +57,6 @@ function FindOrders(){
    echo "</br>Total price: ".$price." USD";
    echo "</div>";
  }
-
 }
 ?>
 

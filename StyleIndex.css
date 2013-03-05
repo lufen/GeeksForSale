@@ -25,6 +25,15 @@ background-attachment: fixed;
 	border-color: #FF2400;
 }
 
+button {
+  color: #000000;
+  background: #FF2400;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid #900;
+  
+}
+
 #menu{
 	float: left;
 	border-radius: 10px;
@@ -42,6 +51,7 @@ background-attachment: fixed;
 }
 
 #content{
+	font-family: 'Comic Sans MS';
 	float: left;
 	border-radius: 10px;
 	width: 53.3%;
@@ -84,10 +94,11 @@ background-attachment: fixed;
 }
 #user{
 	border-radius: 10px;
-	background-color: #FFAAFF;
+	background-color: #FFE9E5;
 	margin-bottom: 10px;
 	margin-left: 0.5%;
 	margin-right: 20.5%;
+	margin-top: 10px;
 	text-indent: 10px;
 	padding-left: 5px;
 	padding-top: 5px;
@@ -106,12 +117,16 @@ s{
 
 t0{
 	font-size:250%;
+	padding-top: 10px;
 }
 t1{
 	font-size:150%;
+	padding-top: 10px;
 }
 t2{
 	font-size:125%;
+	padding-top: 10px;
+	
 }
 
 t2I{

@@ -30,7 +30,7 @@ function toggleBlocklist(){
 		throw new Exception('Unable to update information, Email duplicate');  
 	}
 	$db->commit();
-	echo "<p>User blacklisted";
+	echo "<t1>Users blacklisting changed</t1></br>";
 }
 
 function findUser(){
@@ -66,18 +66,13 @@ function findUser(){
 	}
 }
 ?>
-
 <?php
 include 'Geeksforsaletop.php';
 ?>
 <div id="content">
-	<form class="form-wrapper cf" method="post" action="admin-blackListUsers.php">
-		<input type="text" name="search" placeholder="Search here after email or ID" required>
-		<button type="submit">Search</button>
-	</form>
 	<?php
 	require 'db.php';
-	if (isset ($_POST['id'])) {
+	if (isset ($_POST['userID'])) {
 		try{
 			toggleBlocklist();
 		}catch(Exception $e){
@@ -94,6 +89,11 @@ include 'Geeksforsaletop.php';
 	}
 	
 	?>
+		<t2> Search for a user using email,name or ID</t2>
+	<form class="form-wrapper cf" method="post" action="admin-blackListUsers.php">
+		<input type="text" name="search" placeholder="Search here after email,ID">
+		<button type="submit">Search</button>
+	</form>
 </div>
 </BODY>
 </HTML>

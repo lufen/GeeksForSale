@@ -10,7 +10,7 @@ function OrderPlaced(){
   $sth->bindValue (':workerID',null);
   $sth->bindValue (':shipped',0);
   $sth->execute ();
-  	// Get ID of last insert
+	// Get ID of last insert
   $orderID = $db->lastInsertId();
   $ordersplaced = 0;
   $shouldHaveBeenDone = 0;

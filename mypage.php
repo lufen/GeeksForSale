@@ -59,7 +59,7 @@ function FindOrders(){
 </HEAD>
 <BODY>
  <div id="header">
-  <?php include("topmenu.php"); ?>
+  <?php require_once("topmenu.php"); ?>
  <s>
    <form class="form-wrapper cf">
      <input type="text" placeholder="Search here..." required>

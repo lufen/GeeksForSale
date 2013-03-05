@@ -67,11 +67,14 @@ if(isset($_GET["hidden"])){
     ?>
     <input type="submit" value="Change quantities"/>
   </form>
-  <form action="order.php" method="post">
+  <?php 
+  if(isset($_SESSION['id'])){
+  echo '<form action="order.php" method="post">
    <input type="hidden" name="placed" value="1"/>
    <input type="submit" name="submit" value="Buy">
- </form>
-
+ </form>';
+}
+?>
  <form action="shoppingbasket.php" method="get">
   <input type="hidden" name="deleteContent" value="1"/>
   <input type="submit" name="submit" value="Empty basket">

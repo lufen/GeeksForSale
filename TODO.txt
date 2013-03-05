@@ -6,7 +6,7 @@
 - Endre passord
 
 - worker page
-    - Sende ordre
+    - Sende ordre ( Some what working )
 
 - Customer page
     - Navigere i vareutvalg ved hjelp av søk

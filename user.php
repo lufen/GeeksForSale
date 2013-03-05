@@ -12,7 +12,7 @@
 				$_SESSION['userLevel'] = $row['userLevel'];
 				header( 'Location: mypage.php' );
 			} else{
-				return NULL;
+				throw new Exception(' Not logged in,wrong username/password');
 			}
 		}
 	}

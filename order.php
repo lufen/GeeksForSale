@@ -39,11 +39,8 @@ function OrderPlaced(){
   }
   if($ordersplaced === $shouldHaveBeenDone && $shouldHaveBeenDone != 0){
     emptyBasket();
-    return NULL;
   }else{
-    echo $ordersplaced." ".$shouldHaveBeenDone;
-    
-    return 1;
+    throw new Exception(' Order not placed, something went wrong');
   }
 }
 ?>
@@ -74,10 +71,11 @@ function OrderPlaced(){
 <div id="content">
  <?php
  if(isset($_POST['placed'])){
-  if(OrderPlaced() === NULL){
+  try { 
+    OrderPlaced();
     echo "<p> Thanks for your order";
-  }else{
-    echo "Order failed, code monkeys working on it";
+  } catch (Exception $e){
+    echo $e->getMessage();
   }
 }
 

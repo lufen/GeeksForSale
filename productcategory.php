@@ -24,22 +24,23 @@
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
    $row = $sth->fetch();
-   echo $row['name']."<br>";
-   echo "Products in this category: ";
+   echo "<t0>".$row['name']."</t0><br>";
 
-   $sql = "Select * from products where categoriID=:id";
+   $sql = "Select * from products where categoriID=:id AND forSale=1";
    $sth = $db->prepare($sql);
    $sth->bindValue (':id', $id);
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
-   echo "<br>";
    while($row = $sth->fetch()){
-      if($row['forSale'] != "0"){
-          if(intval($row['rabatt'])!= 0)
-           echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> Price: $".intval($row['price'])*(intval($row['rabatt'])/100)." In Stock: ".$row['onStock']."<br>";
-         else
-          echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> Price: $".$row['price']." In Stock: ".$row['onStock']."<br>";
-       }
+          echo "<div id=product>";
+          echo "<t1><a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a></t1></br>";
+          echo "<t3>In Stock: ".$row['onStock']."</t3></br>";
+          if(intval($row['rabatt'])!= 0){
+            echo "<t2>Price: $".intval($row['price'])*(intval($row['rabatt'])/100)."</t2>";
+         }else{
+            echo "<t2>Price: $".$row['price']."</t2>";
+        }
+          echo "</div>";
    }
    ?>
 </div>

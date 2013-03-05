@@ -102,9 +102,7 @@ function SendOrder(){
   if (isset ($_POST['order'])) {
   echo SendOrder();
 }
-
  MyOrderNotShippedYet();
-
 ?>
 </div>
 </BODY>

@@ -21,6 +21,8 @@ function FindOrders(){
     // Only show the orders wanted
     if($shipped == 1 && intval($row['shipped']) != 1)
       continue;
+    else if($shipped == 0 && intval($row['shipped']) != 0)
+      continue;
 
     $price = 0;
     $orderID = $row['id'];
@@ -55,7 +57,6 @@ function FindOrders(){
    echo "</br>Total price: ".$price." USD";
    echo "</div>";
  }
-
 }
 ?>
 

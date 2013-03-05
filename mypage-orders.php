@@ -21,6 +21,8 @@ function FindOrders(){
     // Only show the orders wanted
     if($shipped == 1 && intval($row['shipped']) != 1)
       continue;
+    else if($shipped == 0 && intval($row['shipped']) != 0)
+      continue;
 
     $price = 0;
     $orderID = $row['id'];
@@ -41,7 +43,7 @@ function FindOrders(){
      $rowPro = $sthPro->fetch();
      echo "Product: <a href=\"productdetails.php?id=".$row2['productID']."\">".$rowPro['name']."</a><br>";
      echo " qty: ".$row2['qty'];
-     echo " price: ".$row2['price'];
+     echo " price: $".$row2['price'];
      echo " Shipped: ";
      if(intval($row2['sendt']) === 0){
       echo "Not shipped";
@@ -55,7 +57,6 @@ function FindOrders(){
    echo "</br>Total price: ".$price." USD";
    echo "</div>";
  }
-
 }
 ?>
 
@@ -69,12 +70,6 @@ function FindOrders(){
 <BODY>
  <div id="header">
   <?php require_once("topmenu.php"); ?>
- <s>
-   <form class="form-wrapper cf">
-     <input type="text" placeholder="Search here..." required>
-     <button type="submit">Search</button>
-   </form>
- </s>
 </div>
 
 <div id="menu">

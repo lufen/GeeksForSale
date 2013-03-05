@@ -26,7 +26,10 @@ function OrderPlaced(){
     $sthTmp->execute ();
     $sthTmp->setFetchMode(PDO::FETCH_ASSOC);  
     $row = $sthTmp->fetch();
-    $price = $row['price'];
+    if(intval($row['rabatt']) != 0)
+      $price = intval($row['price'])*(intval($row['rabatt'])/100);
+    else
+      $price = $row['price'];
 
     $sql = 'INSERT INTO orderdetail (orderID, productID, price, qty, sendt)VALUES (:orderID, :productID, :price, :qty, :sendt)';
     $sth = $db->prepare ($sql);
@@ -55,12 +58,6 @@ function OrderPlaced(){
 <BODY>
  <div id="header">
   <?php include("topmenu.php"); ?>
-  <s>
-   <form class="form-wrapper cf">
-     <input type="text" placeholder="Search here..." required>
-     <button type="submit">Search</button>
-   </form>
- </s>
 </div>
 
 <div id="menu">

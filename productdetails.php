@@ -23,12 +23,6 @@ if (isset ($_GET['Quantity'])) {
    <BODY>
      <div id="header">
       <?php include("topmenu.php"); ?>
-      <s>
-       <form class="form-wrapper cf">
-          <input type="text" placeholder="Search here..." required>
-          <button type="submit">Search</button>
-       </form>
-    </s>
  </div>
  
  <div id="menu">
@@ -48,10 +42,15 @@ if (isset ($_GET['Quantity'])) {
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
    while($row = $sth->fetch()){
       echo "Name: ".$row['name']."<br>";
-      echo "Price: ".$row['price']."<br>";
       echo "Details: ".$row['info']."<br>";
       echo "In stock: ".$row['onStock']."<br>";  
-      echo "Discount: ".$row['rabatt']."<br>";
+      if(intval($row['rabatt'])!= 0){
+        echo "Discount: ".$row['rabatt']."%<br>";
+        echo "Old price: ".$row['price']."</br>";
+        echo "Price: ".intval($row['price'])*(intval($row['rabatt'])/100)."<br>";
+      }else
+        echo "Price: $".$row['price']."<br>";  
+      
       $data = $row['pictures'];
 //      echo "picture looks like this: ".$row['pictures']."<br>";
       echo '<img src="data:image/png;base64,'.$data.'" />';

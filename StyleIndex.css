@@ -69,9 +69,19 @@ background-attachment: fixed;
 	padding-left: 10px;
 	padding-top: 50px;
 	padding-bottom: 50px;
-
 }
 
+#product{
+	border-radius: 10px;
+	background-color: #FFAAFF;
+	margin-bottom: 10px;
+	margin-left: 0.5%;
+	margin-right: 20.5%;
+	text-indent: 10px;
+	padding-left: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
 s{
 	position: absolute;
@@ -83,29 +93,40 @@ s{
 	
 }
 
-/*left{  
-	text-align: left;
-	height: 50px;
-	width: 15%;
-	background-color: #666;
-	text-indent: 10px;
-	margin-bottom: 10px;
-	padding-left: 20px;
-	padding-top: 50px;
-	padding-bottom: 50px;
+t0{
+	font-size:250%;
+}
+t1{
+	font-size:150%;
+}
+t2{
+	font-size:125%;
+}
 
-}*/
+t2I{
+	font-size:100%;
+	padding-left: 20px;
+}
+t3{
+	font-size:80%;
+}
 
 topMenu{  
 	position: absolute;
 	margin-left: 60%; 
+	margin-top: 2%; 
 	text-indent: 10px;
 	text-align: center;
-	margin-bottom: 10px;
 	padding-left: 20px;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 60px;
+}
 
+search{
+	position: absolute;
+	margin-left: 0.5%; 
+	margin-top: 6%; 
+	text-align: center;
+	padding-top: 60px;
 }
 
 :required {

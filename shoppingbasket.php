@@ -25,13 +25,6 @@ if(isset($_GET["hidden"])){
 <BODY>
  <div id="header">
   <?php include("topmenu.php"); ?>
-
- <s>
-   <form class="form-wrapper cf">
-     <input type="text" placeholder="Search here..." required>
-     <button type="submit">Search</button>
-   </form>
- </s>
 </div>
 
 <div id="menu">
@@ -41,29 +34,32 @@ if(isset($_GET["hidden"])){
   <form method="get" action="shoppingbasket.php">
     <input type="hidden" name="hidden" value="1"/>
     <?php 
-    echo "Shopping cart";
+    echo "<t0>Shopping cart</t0></br>";
     $cartPrice = 0;
     foreach ($_SESSION as $key => $quantity){
       if($quantity < 0)
         $quantity = 0;
-      $sql = "Select name,price from products where id=:id";
+      $sql = "Select name,price,rabatt from products where id=:id";
       $sth = $db->prepare($sql);
       $sth->bindValue (':id', substr($key,1));
       $sth->execute();
       $sth->setFetchMode(PDO::FETCH_ASSOC);  
-      echo "<br>";
-
-              // Print out each row in the basket
+      // Print out each row in the basket
       while($row = $sth->fetch()){
-        echo "<p>Name: ".$row['name']." Price: ".$row['price']." Qty: ";
+        if(intval($row['rabatt']) != 0)
+          $price = intval($row['price'])*(intval($row['rabatt'])/100);
+        else
+          $price = $row['price'];
+        echo "<t2>Name: </t2>".$row['name']."</br> <t2>Price per: </t2>$".$price." <t2>Qty: </t2>";
         echo "<input type=\"number\" name=\"$key\" value=$quantity min=\"0\"/> ";
-        $linePrice = $row['price']*$quantity;
+        $linePrice = $price*$quantity;
         $cartPrice +=$linePrice;
-        echo "Price: ".$linePrice;
+        echo "<t2>Sub Total: </t2>$".$linePrice;
         echo "<br>";
       }
     }
-    echo "Total price: ".$cartPrice."<br>";
+    echo "<br>";
+    echo "<t1>Total price: </t1>$".$cartPrice."<br>";
     ?>
     <input type="submit" value="Change quantities"/>
   </form>

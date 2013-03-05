@@ -38,7 +38,7 @@ function SendOrder(){
 
       // Update amount of each product in stock
       $db->exec('LOCK TABLES products WRITE');
-      $sql = 'Update products set onStock=:qtyLeft where id=:productID';
+      $sql = 'UPDATE products set onStock=:qtyLeft where id=:productID';
       $updateSTH = $db->prepare ($sql);
       $updateSTH->bindParam (':productID', $row['productID']);
       $left =  intval($tmpRow['onStock']) - intval($row['qty']);
@@ -87,13 +87,6 @@ function SendOrder(){
 <BODY>
  <div id="header">
   <?php include("topmenu.php"); ?>
-
-  <s>
-   <form class="form-wrapper cf">
-    <input type="text" placeholder="Search here..." required>
-    <button type="submit">Search</button>
-  </form>
-</s>
 </div>
 
 <div id="menu">
@@ -109,9 +102,7 @@ function SendOrder(){
   if (isset ($_POST['order'])) {
   echo SendOrder();
 }
-
  MyOrderNotShippedYet();
-
 ?>
 </div>
 </BODY>

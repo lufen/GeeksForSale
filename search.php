@@ -16,19 +16,12 @@
    ?>
 </div>
 <div id="content">
+  <t0>Search results </t0>
    <?php
-   $id = $_GET['id'];
-   $sql = "Select * from subcategory where id=:id";
+   $search = '\'%'.mysql_real_escape_string($_POST['search']).'%\'';
+   $sql = "SELECT * from products where name like $search OR id=:search or info like $search AND forSale=1";
    $sth = $db->prepare($sql);
-   $sth->bindValue (':id', $id);
-   $sth->execute();
-   $sth->setFetchMode(PDO::FETCH_ASSOC);  
-   $row = $sth->fetch();
-   echo "<t0>".$row['name']."</t0><br>";
-
-   $sql = "Select * from products where categoriID=:id AND forSale=1";
-   $sth = $db->prepare($sql);
-   $sth->bindValue (':id', $id);
+   $sth->bindValue (':search', $_POST['search']);
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
    while($row = $sth->fetch()){
@@ -39,6 +32,7 @@
             echo "<t2>Price: $".intval($row['price'])*(intval($row['rabatt'])/100)."</t2>";
          }else{
             echo "<t2>Price: $".$row['price']."</t2>";
+          
         }
           echo "</div>";
    }

@@ -17,6 +17,36 @@
 		}
 	}
 
+function changePassword($old,$new){
+	require 'db.php';
+	// calculate hashes of passwords
+	$oldhash = convertPlainTextToEncrypted($old,$_SESSION['id']);
+	$newhash = convertPlainTextToEncrypted($new,$_SESSION['id']);
+
+	$db->beginTransaction();
+	$db->query('LOCK TABLES users WRITE');
+	$sql = 'SELECT * FROM users WHERE id=:id';
+	$sth = $db->prepare ($sql);
+	$sth->bindParam (':id', $_SESSION['id']);
+	$sth->execute ();
+	if ($row = $sth->fetch()) {
+		if($row['password'] == $oldhash){
+			$sql = 'update users set password = :password where id = :id';
+			$sth = $db->prepare ($sql);
+			$sth->bindValue (':password',$newhash);
+			$sth->bindValue (':id',$_SESSION['id']);
+			$sth->execute ();
+			if ($sth->rowCount()==0) {                      
+				$db->rollBack();                      
+				$db->query('UNLOCK TABLES');
+				throw new Exception('Unable to set new password');  
+			}
+		}else{
+			throw new Exception('Wrong password');
+		}
+	}
+}
+
 function convertPlainTextToEncrypted($password,$uid){
 	// Convert a password from plaintext into a encrypted one
 	$salt = "c63b03f38470b6c30abdb8d2b7e59b14ddeb6a0d6e56956b0df44a0a8dd3cf6980dcbd907cb9aa1ea9edccb37739e20e240ddeafd68d386d289cd68ee9343167";
@@ -65,7 +95,7 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	$_SESSION['userLevel'] =  $userLevel;
 }
 
-// Check if user logged in, if not then redirect to login page.
+// Check if user,worker or admin logged in, if not then redirect to login page.
 function CheckIfUserLoggedIn(){
 	require_once 'sessionStart.php';
 	if(!isset($_SESSION['id'])){

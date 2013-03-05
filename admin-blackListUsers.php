@@ -90,7 +90,7 @@ include 'Geeksforsaletop.php';
 	}
 	
 	?>
-		<t2> Search for a user using email,name or ID</t2>
+	<t2> Search for a user using email,name or ID</t2>
 	<form class="form-wrapper cf" method="post" action="admin-blackListUsers.php">
 		<input type="text" name="search" placeholder="Search here after email,ID">
 		<button type="submit">Search</button>

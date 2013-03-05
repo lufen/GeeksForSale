@@ -34,6 +34,14 @@ button {
   
 }
 
+form{
+  color: #000000;
+  background: #FF2400;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid #900;
+}
+
 #menu{
 	float: left;
 	border-radius: 10px;

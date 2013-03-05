@@ -1,7 +1,7 @@
 - Admin page
     -Endre og slette varer og varekategorier
 - Users
-    - slette og endre egne ordre som ikke er sendt
+    - endre egne ordre som ikke er sendt
 
 
 - CSS, make some designs

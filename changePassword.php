@@ -18,11 +18,11 @@ include 'Geeksforsaletop.php';
     echo "<p> Password changed</p>";
   }
     ?>
-    <h1> Change password </h1>
+    <h1> Change password</h1>
      <form method="post" action="changePassword.php">
-    <label for="Password">Old Password</label>
+    <label for="Password">Old Password   </label>
     <input type="password" name="oldassword" required/><br/>
-    <label for="Password"> New Password</label>
+    <label for="Password">New Password   </label>
     <input type="password" name="newPassword1" required/><br/>
     <label for="Password">Retype password</label>
     <input type="password" name="newPassword2" required/><br/>

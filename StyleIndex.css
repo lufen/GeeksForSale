@@ -6,7 +6,7 @@ background-attachment: fixed;
 
 
 #header{
-	height: 150px;
+	height: 50px;
 	border-radius: 10px;
 	background-color: #ffffff;
 	background-image:url('Geeksforsale.jpg');
@@ -27,20 +27,12 @@ background-attachment: fixed;
 
 button {
   color: #000000;
-  background: #FF2400;
   font-weight: bold;
   text-transform: uppercase;
   border: 1px solid #900;
   
 }
 
-form{
-  color: #000000;
-  background: #FF2400;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: 1px solid #900;
-}
 
 #menu{
 	float: left;
@@ -67,7 +59,6 @@ form{
 	opacity: .8;
 	margin-bottom: 10px;
 	margin-left:0.5%;
-	text-indent: 10px;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-bottom: 50px;
@@ -84,9 +75,9 @@ form{
 	margin-bottom: 10px;
 	margin-left: 0.5%;
 	text-indent: 10px;
-	padding-left: 10px;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-left: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #product{
@@ -148,19 +139,15 @@ t3{
 topMenu{  
 	position: absolute;
 	margin-left: 60%; 
-	margin-top: 2%; 
 	text-indent: 10px;
 	text-align: center;
-	padding-left: 20px;
-	padding-top: 60px;
 }
 
 search{
 	position: absolute;
+	margin-top: 3%;
 	margin-left: 0.5%; 
-	margin-top: 6%; 
 	text-align: center;
-	padding-top: 60px;
 }
 
 :required {
@@ -173,4 +160,11 @@ search{
   -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   box-shadow: 0 0 5px rgba(0, 0, 255, .5);*/
+}
+
+label {
+	width : 140px;
+	text-align : right;
+	float : left;
+	margin-right : 5px;
 }

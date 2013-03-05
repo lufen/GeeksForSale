@@ -103,6 +103,12 @@ t1{
 t2{
 	font-size:125%;
 }
+
+t2I{
+	font-size:100%;
+	text-indent: 50px;
+	padding-left: 20px;
+}
 t3{
 	font-size:80%;
 }

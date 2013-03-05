@@ -4,17 +4,29 @@ CheckIfUserLoggedIn();
 function UpdateUserInfo(){
 	require 'db.php';  
 	if (isset ($_POST['name'])) {
+		try{
 		$db->beginTransaction();
 		$db->query('LOCK TABLES users WRITE');
-	// Add user, then read back and update it with the encrypted one.
-		$sql = 'UPDATE users set name=?, streetAdress=?,postCode=?,country=?, email=? where id=?';
+		// Add user, then read back and update it with the encrypted one.
+		$sql = 'UPDATE users set name=:name, streetAdress=:streetAdress,postCode=:postCode,country=:country, email=:email where id=:id';
 		$sth = $db->prepare ($sql);
-		$affected_rows = $sth->execute (array($_POST['name'],$_POST['streetAdress'],$_POST['postCode'],$_POST['Country'],$_POST['Email'],$_SESSION['id']));
+		$sth->bindValue (':name', $_POST['name']);
+		$sth->bindValue (':streetAdress', $_POST['streetAdress']);
+		$sth->bindValue (':postCode', $_POST['postCode']);
+		$sth->bindValue (':country',$_POST['Country']);
+		$sth->bindValue (':email', $_POST['Email']);
+		$sth->bindValue (':id', $_SESSION['id']);
+		$affected_rows = $sth->execute();
 		if($affected_rows != 1){
-		// Should only change for one user at the time
+			// Should only change for one user at the time
 			$db->rollBack();                      
 			$db->query('UNLOCK TABLES');
-			throw new Exception('Unable to set new password');  
+			throw new Exception('Unable to update information');  
+		}
+		}catch (Exception $e){
+			$db->rollBack();                      
+			$db->query('UNLOCK TABLES');
+			throw new Exception('Unable to update information, Email duplicate');  
 		}
 		$db->commit();
 		echo "<p>User information set and updated";
@@ -47,7 +59,11 @@ function UpdateUserInfo(){
 		</div>
 		<div id="content">
 			<?php 
-			UpdateUserInfo();
+			try{
+				UpdateUserInfo();
+			}catch (Exception $e){
+				echo $e->getMessage();
+			}
 			?>
 			<form method="post" action="mypage-changeinfo.php">
 				<label for="name">Name</label>

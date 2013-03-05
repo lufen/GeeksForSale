@@ -6,7 +6,7 @@ background-attachment: fixed;
 
 
 #header{
-	height: 150px;
+	height: 50px;
 	border-radius: 10px;
 	background-color: #ffffff;
 	background-image:url('Geeksforsale.jpg');
@@ -27,20 +27,19 @@ background-attachment: fixed;
 
 button {
   color: #000000;
-  background: #FF2400;
   font-weight: bold;
   text-transform: uppercase;
   border: 1px solid #900;
   
 }
 
-form{
+/*form{
   color: #000000;
   background: #FF2400;
   font-weight: bold;
   text-transform: uppercase;
   border: 1px solid #900;
-}
+}*/
 
 #menu{
 	float: left;
@@ -148,19 +147,15 @@ t3{
 topMenu{  
 	position: absolute;
 	margin-left: 60%; 
-	margin-top: 2%; 
 	text-indent: 10px;
 	text-align: center;
-	padding-left: 20px;
-	padding-top: 60px;
 }
 
 search{
 	position: absolute;
+	margin-top: 3%;
 	margin-left: 0.5%; 
-	margin-top: 6%; 
 	text-align: center;
-	padding-top: 60px;
 }
 
 :required {

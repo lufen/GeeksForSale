@@ -110,7 +110,7 @@ include 'Geeksforsaletop.php';
 ?>
 
 <div id="content">
-  
+  <button> <a href="admin-blackListUsers.php">Blacklist Users </a> </button></br>
  <p> Add a new top category
   <form action="admin.php" method="post">
     <input type="text" name="categoryName" required />

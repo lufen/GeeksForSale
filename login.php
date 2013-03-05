@@ -33,8 +33,10 @@
 			}
 
 			if(isset($_POST['email'])){
-				if(login($_POST['email'],$_POST['password']) == NULL){
-					echo "Wrong username or password";
+				try{
+					login($_POST['email'],$_POST['password']);
+				}catch(Exception $e){
+					echo $e->getMessage();
 				}
 			}
 			//header( 'Location: mypage.php' );

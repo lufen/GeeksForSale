@@ -3,6 +3,7 @@ include 'Geeksforsaletop.php';
 ?> 
 
 <div id= "content">
+	<?php include 'admin-buttons.php'; ?>
 	 <p> Add a new top category
   <form action="admin.php" method="post">
     <input type="text" name="categoryName" required />

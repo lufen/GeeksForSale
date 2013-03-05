@@ -20,7 +20,7 @@ function commonWorkerSearch($sql,$ship=0){
 			$sthPro->execute ();
 			$row3 = $sthPro->fetch();
 			echo "</br>";
-			echo "Product: ".$row2['productID']."Name: ".$row3['name']."</br>";
+			echo "Product ID: ".$row2['productID']."</br>Name: ".$row3['name']."</br>";
 			echo "Qty: ".$row2['qty']." In stock: ".$row3['onStock'];
 			echo "</br>";
         	// Any of the products that there is not enough of 

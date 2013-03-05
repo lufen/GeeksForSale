@@ -7,7 +7,7 @@ function toggleBlocklist(){
 	try{
 		$db->beginTransaction();
 		$db->query('LOCK TABLES users WRITE');
-		// Add user, then read back and update it with the encrypted one.
+		// Update blacklist value
 		$sql = 'UPDATE users set blacklisted=:blacklisted where id=:id';
 		$sth = $db->prepare ($sql);
 		// Was the user before blacklisted

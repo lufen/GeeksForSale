@@ -82,7 +82,7 @@ include 'Geeksforsaletop.php';
 
 <div id="content">
  <?php
- echo "<p>My orders not shipped or taken yet";
+ echo "<p>My orders not shipped";
  echo "</br>";
   if (isset ($_POST['order'])) {
   echo SendOrder();

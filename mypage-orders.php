@@ -70,16 +70,20 @@ echo "</div>";
 
 function deleteOrder(){
   require 'db.php';
+  try{
   // Delete from orders
-  $sql = 'delete from orders where id = :id';
+  $sql = 'DELETE from orders where id = :id AND shipped=0';
   $sth = $db->prepare($sql);
   $sth->bindValue (':id', $_POST['orderID']);
   $sth->execute();
   // Delete from orderdetails
-  $sql = 'delete from orderdetail where orderID = :id';
+  $sql = 'DELETE from orderdetail where orderID = :id AND sendt=0';
   $sth = $db->prepare($sql);
   $sth->bindValue (':id', $_POST['orderID']);
   $sth->execute();
+}catch (Exception $e){
+  echo $e->getMessage();
+}
 }
 ?>
 

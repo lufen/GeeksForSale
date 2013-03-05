@@ -1,8 +1,5 @@
 <topMenu>
-       <form class="form-wrapper cf" method="post" action="search.php">
-          <input type="text" name="search" placeholder="Search here..." required>
-          <button type="submit">Search</button>
-       </form>
+
 	<?php
 	require_once 'sessionStart.php';
 	if(isset($_SESSION['id'])){
@@ -22,3 +19,10 @@
 	?>
 	<a href="shoppingbasket.php">Shopping Basket</a><br>
 </topMenu>
+
+<search>
+	<form class="form-wrapper cf" method="post" action="search.php">
+		<input type="text" name="search" placeholder="Search here..." required>
+		<button type="submit">Search</button>
+	</form>
+</search>

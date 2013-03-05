@@ -17,12 +17,12 @@
 </div>
 <div id="content">
    <?php
-   $sql = "Select * from products where name like '%:search%' OR id=:search";
+   $search = '\'%'.mysql_real_escape_string($_POST['search']).'%\'';
+   $sql = "SELECT * from products where name like $search OR id=:search or info like $search";
    $sth = $db->prepare($sql);
    $sth->bindValue (':search', $_POST['search']);
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
-   echo "<br>";
    while($row = $sth->fetch()){
       if($row['forSale'] != "0")
          echo "<a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a> Price: ".$row['price']." In Stock: ".$row['onStock']."<br>";

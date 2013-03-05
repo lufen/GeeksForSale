@@ -1,15 +1,16 @@
+- Login for users, admins and workers
 - Admin page
     -Legge til admins og workers
+    -Endre og slette varer og varekategorier
+    
 - Endre passord
 
 - worker page
     - Sende ordre
 
-
-- CSS, make some designs, make pretty
-	- WORKING ON IT!
+- Customer page
+    - Navigere i vareutvalg ved hjelp av søk
+- CSS, make some designs
+- Make pretty
 
 - _make OO_
-- Masse
-
-- Register workers and administrators

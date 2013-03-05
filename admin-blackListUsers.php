@@ -1,8 +1,4 @@
 <?php
-include 'Geeksforsaletop.php';
-?>
-
-<?php
 require_once "user.php";
 CheckIfAdminLoggedIn();
 ?>

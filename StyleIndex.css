@@ -33,15 +33,7 @@ button {
   
 }
 
-form{
-  color: #000000;	
-  text-transform: uppercase;
-}
 
-input[type="password"] {
-	position: fixed;
-	
-}
 #menu{
 	float: left;
 	border-radius: 10px;
@@ -168,4 +160,11 @@ search{
   -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   box-shadow: 0 0 5px rgba(0, 0, 255, .5);*/
+}
+
+label {
+	width : 140px;
+	text-align : right;
+	float : left;
+	margin-right : 5px;
 }

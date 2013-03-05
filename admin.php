@@ -1,4 +1,6 @@
 <?php
+require_once "user.php";
+CheckIfAdminLoggedIn();
 require_once 'db.php';
 
 if(isset($_POST['categoryName'])){
@@ -11,7 +13,8 @@ if(isset($_POST['categoryName'])){
  }
 }
 
-else if(isset($_POST['subcategoryName'])){
+else if(isset($_POST['subcategoryName']))
+{
   // Add new sub category
   $sql = 'select id from productcategory where categoryName = :categoryName';
   $sth = $db->prepare($sql);
@@ -19,7 +22,8 @@ else if(isset($_POST['subcategoryName'])){
   $sth->execute();
   $sth->setFetchMode(PDO::FETCH_ASSOC);
     // only add if we only found one category
-  if($sth->rowCount() === 1){
+  if($sth->rowCount() === 1)
+  {
       // Add the new sub category
     $row = $sth->fetch();
     $id = $row['id'];
@@ -27,12 +31,15 @@ else if(isset($_POST['subcategoryName'])){
     $sth2 = $db->prepare($sql);
     $sth2->bindValue (':name', $_POST['subcategoryName']);
     $sth2->bindValue (':categoryid', $id);
-    if($sth2->execute()){
+    if($sth2->execute())
+    {
       header( 'Location: admin.php' );
     }
   }
  
-}else if(isset($_POST['productName'])){
+}
+else if(isset($_POST['productName']))
+{
    // Add new product
   if(isset($_FILES['picturefn']))
   {
@@ -70,6 +77,26 @@ else if(isset($_POST['subcategoryName'])){
         echo "Added OK";
       }
     }
+  }
+}
+else if(isset($_POST['username']))
+{
+  $username = $_POST['username'];
+  $streetAddress = $_POST['streetAddress'];
+  $postCode = $_POST['postCode'];
+  $country = $_POST['country'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $userLevel = $_POST['userLevel'];
+  try
+  {
+     registerUser($db,$username, $streetAddress, $postCode, $country, $email, $password, $userLevel);
+           // Redirect back to homepage
+     header( 'Location: admin.php' );
+  }
+  catch(Exception $e)
+  {
+       echo $e->getMessage();
   }
 }
 
@@ -161,14 +188,24 @@ else if(isset($_POST['subcategoryName'])){
         <input type="submit" name="submit" value="Add new product">
       </form>
 
-      <p> Add user <br>
+      <p>Add user<br>
         <form action="admin.php" method="post"
         enctype="multipart/form-data">
           <label for="username">Username</label>
-          <input type="text" name=""
-
-
-
-
+          <input type="text" name="username" required="required"/><br>
+          <label for="streetAddress">Street address</label>
+          <input type="text" name="streetAddress" required="required"/><br>
+          <label for="postCode">Postal code</label>
+          <input type="number" name="postCode" required="required"/><br>
+          <label for="country">Country</label>
+          <input type="text" name="country" required="required"/><br>
+          <label for="email">E-mail</label>
+          <input type="email" name="email" required="requried"/><br>
+          <label for="password">Password</label>
+          <input type="password" name="password" required="required"/><br>
+          <label for="userLevel">User level. 0 for regular user, 1 for workers and 2 for administrators</label><br>
+          <input type="number" name="userLevel" required="required"/><br>
+          <input type="submit" name="submit" value="Add new user">
+        </form>
     </div>
   </BODY>

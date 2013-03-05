@@ -23,12 +23,12 @@ function commonWorkerSearch($sql){
 			echo "Product: ".$row2['productID']."Name: ".$row3['name']."</br>";
 			echo "Qty: ".$row2['qty']." In stock: ".$row3['onStock'];
 			echo "</br>";
-        // Any of the products that there is not enough of 
+        	// Any of the products that there is not enough of 
 			if(intval($row2['qty']) > intval($row3['onStock'])){
 				$gotWhatWeNeed = 0;
 			}
 		}
-      // Only allow to take an order if there is enough on stock
+     	// Only allow to take an order if there is enough on stock
 		if($gotWhatWeNeed != 0){
 			echo '<form action="worker.php" method="post">';
 			echo "<input type=\"hidden\" name=\"order\" value=".$orderID."/>";

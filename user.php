@@ -24,7 +24,7 @@ function convertPlainTextToEncrypted($password,$uid){
 	return $hash;
 }
 
-function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $password){
+function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $password, $userLevel=0){
 	require_once 'sessionStart.php';
 	$db->beginTransaction();
 	$db->query('LOCK TABLES users WRITE');
@@ -38,7 +38,7 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	$sth->bindValue (':email', $email);
 	$sth->bindValue (':password',"hei");
 	$sth->bindValue (':blacklisted', 0);
-	$sth->bindValue (':userLevel', 0);
+	$sth->bindValue (':userLevel', $userLevel);
 	$sth->execute ();
 	if($sth->rowCount() == 0){
 	 // In case of error, rollback

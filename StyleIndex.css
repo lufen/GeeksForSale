@@ -82,7 +82,8 @@ s{
 	padding-top: 40px;
 	
 }
-left{  
+
+/*left{  
 	text-align: left;
 	height: 50px;
 	width: 15%;
@@ -93,7 +94,7 @@ left{
 	padding-top: 50px;
 	padding-bottom: 50px;
 
-}
+}*/
 
 topMenu{  
 	position: absolute;
@@ -108,10 +109,13 @@ topMenu{
 }
 
 :required {
-  border-color: #88a;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  border-color: #FF2400;
+  text-indent: 10px;
+  text-align: left;
+  
+  /*-webkit-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -o-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
   -ms-box-shadow: 0 0 5px rgba(0, 0, 255, .5);
-  box-shadow: 0 0 5px rgba(0, 0, 255, .5);
+  box-shadow: 0 0 5px rgba(0, 0, 255, .5);*/
 }

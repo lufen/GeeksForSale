@@ -70,7 +70,7 @@ button {
 #order{
 	border-radius: 10px;
 	width: 54%;
-	background-color: #FFEEFF;
+	background-color: #ffffff;
 	opacity: .8;
 	margin-bottom: 10px;
 	margin-left: 0.5%;
@@ -81,8 +81,9 @@ button {
 }
 
 #product{
-	border-radius: 10px;
-	background-color: #FFAAFF;
+	border-radius: 5px;
+	width: 97%;
+	background-color: #FFE9E5;
 	margin-bottom: 10px;
 	margin-left: 0.5%;
 	margin-right: 20.5%;
@@ -91,6 +92,11 @@ button {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+#fb-like{
+	
+}
+
 #user{
 	border-radius: 10px;
 	background-color: #FFE9E5;
@@ -113,6 +119,7 @@ s{
 	padding-top: 40px;
 	
 }
+
 
 t0{
 	font-size:250%;
@@ -168,3 +175,4 @@ label {
 	float : left;
 	margin-right : 5px;
 }
+

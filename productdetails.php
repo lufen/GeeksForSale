@@ -43,20 +43,18 @@ include 'Geeksforsaletop.php';
 ?>
 <form method="get" action="productdetails.php">
   <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
-  <label for="Quantity">Quantity</label>
-  <input type="number" name="Quantity"  min="0"  required/><br/>
+  <shortlabel for="Quantity">Quantity</shortlabel>
+  <input type="number" name="Quantity"  min="0"  required/></br>  
   <input type="submit" value="Put in cart"/>
 </form>
 <?php 
 require 'user.php';  
-if(isUserLoggedIn()){
-
- echo'<form method="post" action="productExperience.php">';
- echo '<input type="hidden" name="pID" value="'.$_GET['id']."/>";
- echo '<input type="submit" value="Click to add experience"/>
- </form>';
+if(isUserLoggedIn() == true){
+ echo '<form method="post" action="productExperience.php">';
+ echo "<input type=\"hidden\" name=\"pID\" value=".$_GET['id']."/>";
+ echo '<input type="submit" value="Click to add experience"/> </form>';
 }else{
-  echo "<t3> Please log in to add experience about this product</t3>";
+  echo "<t3> Please log in to add experience about this product</t3></br>";
 } 
 ?>
 <t2> Comments </t2>

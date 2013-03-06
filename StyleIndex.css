@@ -183,7 +183,13 @@ search{
 }
 
 label {
-	width : 200px;
+	width : 150px;
+	text-align : right;
+	float : left;
+	margin-right : 5px;
+}
+
+shortlabel {
 	text-align : right;
 	float : left;
 	margin-right : 5px;

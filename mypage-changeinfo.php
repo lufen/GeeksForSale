@@ -66,7 +66,10 @@ include 'Geeksforsaletop.php';
 				<label for="postcode">Post code</label>
 				<input type="text" name="postCode" required value="<?php echo $row['postCode'];?>"/><br/>
 				<label for="country">Country</label>
-				<input type="text" name="Country" required value="<?php echo $row['country'];?>"/><br/>
+				<select id="Country" name="Country">
+				<?php include 'countryList.php'; ?>
+				<option selected="selected"><?php echo $row['country'] ?></option>
+				</select></br>
 				<label for="Email">Email</label>
 				<input type="email" name="Email" required value="<?php echo $row['email'];?>"/><br/>
 				<input type="submit" value="Update"/>

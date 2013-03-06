@@ -54,7 +54,7 @@ function convertPlainTextToEncrypted($password,$uid){
 	return $hash;
 }
 
-function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $password, $userLevel=0){
+function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $password, $userLevel=0,$login=1){
 	require_once 'sessionStart.php';
 	$db->beginTransaction();
 	$db->query('LOCK TABLES users WRITE');
@@ -91,8 +91,10 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	}
 	$db->commit();
 	// new user created, then log him in
-	$_SESSION['id'] = $uid;
-	$_SESSION['userLevel'] =  $userLevel;
+	if($login===1){
+		$_SESSION['id'] = $uid;
+		$_SESSION['userLevel'] =  $userLevel;
+	}
 }
 
 function isUserBlacklisted(){

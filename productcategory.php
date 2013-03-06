@@ -18,7 +18,7 @@ include 'Geeksforsaletop.php';
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
    while($row = $sth->fetch()){
-          echo "<div id=product>";
+          echo "<div id=frontpage>";
           echo "<t1><a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a></t1></br>";
           echo "<t3>In Stock: ".$row['onStock']."</t3></br>";
           if(intval($row['rabatt'])!= 0){

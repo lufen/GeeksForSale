@@ -88,9 +88,9 @@ else if(isset($_POST['username']))
   $userLevel = $_POST['userLevel'];
   try
   {
-     registerUser($db,$username, $streetAddress, $postCode, $country, $email, $password, $userLevel);
-           // Redirect back to homepage
-     header( 'Location: admin.php' );
+    registerUser($db,$username, $streetAddress, $postCode, $country, $email, $password, $userLevel,0);
+    // Redirect back to homepage
+    header( 'Location: admin.php' );
   }
   catch(Exception $e)
   {

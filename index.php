@@ -16,14 +16,11 @@ include 'Geeksforsaletop.php';
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
     while($row = $sth->fetch()){
     	echo "<div id=product>";
-    	echo $row['name']."<br>";
+    	echo "<t1><a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a></t1></br>";
   		echo "Details: ".$row['info']."<br>";
   		echo "In stock: ".$row['onStock']."<br>";  
   		echo "Discount: ".$row['rabatt']."%<br>";
   		echo "Old price: ".$row['price']."</br>";
-		?>
-		<FORM><INPUT Type="BUTTON" VALUE="My shipped orders" ONCLICK="window.location.href='mypage-orders.php?shipped=1'"> </FORM>
-		<?php
   		echo "Price: ".(intval($row['price'])*(1-(intval($row['rabatt'])/100)))."<br>";
 		echo "</div>";
     }

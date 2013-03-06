@@ -6,13 +6,14 @@ include 'Geeksforsaletop.php';
 if(isset($_POST['name']))
 {
 	var_dump($_POST);
-	$sql = 'UPDATE products set name = :name, price = :price, info = :information, rabatt = :rabatt, categoriID = :subcategory where  id = :id';
+	$sql = 'UPDATE products set name = :name, price = :price, info = :information, rabatt = :rabatt, categoriID = :subcategory onStock = :onStock where  id = :id';
 	$sth = $db->prepare($sql);
 	$sth->bindValue(':name', $_POST['name']);
 	$sth->bindValue(':price', $_POST['price']);
 	$sth->bindValue(':information', $_POST['information']);
 	$sth->bindValue(':rabatt', $_POST['rabatt']);
 	$sth->bindValue(':subcategory', $_POST['subcategory']);
+	$sth->bindValue(':onStock', $_POST['onStock'])
 	$sth->bindValue(':id', $_GET['id']);
 	$affectedRows = $sth->execute();
 	$line = __LINE__;
@@ -52,6 +53,8 @@ if(isset($_POST['name']))
 				<input type="text" name="information" required="required" value="<?php echo $row['info'];?>"/><br/>
 				<label for="rabatt">Discount in percentage</label>
 				<input type="number" name="rabatt" required="required" value="<?php echo $row['rabatt'];?>"/><br/>
+				<label for="onStock">Available units of that product</label>
+				<input type="number" name="onStock" required="required" value="<?php echo $row['onStock'];?>"/><br/>
 	    	<select name="subcategory" required="required">
 		      <?php
 		      $subcategory = $row['categoriID'];

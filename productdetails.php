@@ -32,7 +32,7 @@ include 'Geeksforsaletop.php';
   if(intval($row['rabatt'])!= 0){
     echo "Discount: ".$row['rabatt']."%<br>";
     echo "Old price: ".$row['price']."</br>";
-    echo "Price: ".intval($row['price'])*(intval($row['rabatt'])/100)."<br>";
+    echo "Price: ".intval($row['price'])-intval($row['price'])*(intval($row['rabatt'])/100)."<br>";
   }else
   echo "Price: $".$row['price']."<br>";  
 

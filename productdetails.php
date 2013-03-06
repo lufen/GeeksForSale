@@ -44,7 +44,7 @@ include 'Geeksforsaletop.php';
 <form method="get" action="productdetails.php">
   <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
   <shortlabel for="Quantity">Quantity</shortlabel>
-  <input type="number" name="Quantity"  min="0"  required/></br>  
+  <input type="number" name="Quantity" value=1 min="0" required="required"/></br>  
   <input type="submit" value="Put in cart"/>
 </form>
 <?php 

@@ -22,7 +22,7 @@ include 'Geeksforsaletop.php';
       <label for="streetAddress">Street adress</label>
       <input type="text" name="streetAddress" required/><br/>
       <label for="postcode">Post code</label>
-      <input type="text" name="postCode" required/><br/>
+      <input type="number" name="postCode" required/><br/>
       <label for="country">Country</label>
       <select id="Country" name="Country" required>
       <?php include 'countryList.php'; ?>

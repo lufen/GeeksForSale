@@ -60,18 +60,18 @@ include 'Geeksforsaletop.php';
 					$row = $sth->fetch();
 				}
 				?>
-				<input type="text" name="name" required  value ="<?php echo $row['name'];?>"/><br/>
+				<input type="text" name="name" required=required  value ="<?php echo $row['name'];?>"/><br/>
 				<label for="streetAddress">Street adress</label>
-				<input type="text" name="streetAddress" required value="<?php echo $row['streetAddress'];?>"/><br/>
+				<input type="text" name="streetAddress" required=required value="<?php echo $row['streetAddress'];?>"/><br/>
 				<label for="postcode">Post code</label>
-				<input type="number" name="postCode" required value="<?php echo $row['postCode'];?>"/><br/>
+				<input type="number" name="postCode" required=required value="<?php echo $row['postCode'];?>"/><br/>
 				<label for="country">Country</label>
-				<select id="Country" name="Country" required	>
+				<select id="Country" name="Country" required=required	>
 				<?php include 'countryList.php'; ?>
 				<option selected="selected"><?php echo $row['country'] ?></option>
 				</select></br>
 				<label for="Email">Email</label>
-				<input type="email" name="Email" required value="<?php echo $row['email'];?>"/><br/>
+				<input type="email" name="Email" required=required value="<?php echo $row['email'];?>"/><br/>
 				<input type="submit" value="Update"/>
 			</div>
 		</BODY>

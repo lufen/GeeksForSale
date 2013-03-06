@@ -9,9 +9,6 @@ background-attachment: fixed;
 	height: 50px;
 	border-radius: 10px;
 	background-color: #ffffff;
-	background-image:url('Geeksforsale.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
 	opacity: .8;
 	margin-bottom: 10px;
 	margin-left: 15%;
@@ -25,6 +22,12 @@ background-attachment: fixed;
 	border-color: #FF2400;
 }
 
+topImage{
+	position: absolute;
+	left: 40%;
+	top: 0.8%;
+}
+
 button {
   color: #000000;
   font-weight: bold;
@@ -32,7 +35,6 @@ button {
   border: 1px solid #900;
   
 }
-
 
 #menu{
 	float: left;

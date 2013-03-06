@@ -18,7 +18,9 @@
 	?>
 	<a href="shoppingbasket.php">Shopping Basket</a><br>
 </topMenu>
-
+<topImage>
+	<a href="index.php"><img src="Geeksforsale.jpg" border="0"></a> 
+</topImage>
 <search>
 	<form class="form-wrapper cf" method="post" action="search.php">
 		<input type="text" name="search" placeholder="Search here..." required>

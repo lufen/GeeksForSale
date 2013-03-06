@@ -65,7 +65,7 @@ if(isset($_POST['productid']))
 					else
 						$forSale = " not ";
 					echo "<t3><a href=\"productdetails.php?id=".$productrow['id']."\">".$productrow['name']."    Product is".$forSale."for sale.</a></t3>     
-					<button> <a href=\"admin-Products.php?id=".$productrow['id']."\"> Edit a product        </a> </button>";
+					<button> <a href=\"admin-changeProduct.php?id=".$productrow['id']."\"> Edit a product        </a> </button>";
 				  echo'<form method="post" action="admin-Products.php">';
 				  echo "<input type=\"hidden\" name=\"productid\" value=".$productrow['id']."/>";
 				  echo '<input type="submit" value="Toggle on sale"/></br>';

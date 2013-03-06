@@ -48,41 +48,41 @@ function AddProduct()
 <div id= "content">
 	<?php include 'admin-buttons.php'; ?>
   <t1>Add a new product to</t1> </br>
-    <?php 
-    if(isset($_POST['productName'])){
-      AddProduct();
+  <?php 
+  if(isset($_POST['productName'])){
+    AddProduct();
+  }
+  ?>
+  <form action="admin-addProducts.php" method="post"
+  enctype="multipart/form-data">
+  <select name="subcategory">
+    <?php
+    $sql = 'select name from subcategory';
+    $sth = $db->prepare($sql);
+    $sth->execute();
+    $sth->setFetchMode(PDO::FETCH_ASSOC);  
+    while($row = $sth->fetch()){
+      echo "<option value=\"".$row['name']."\">".$row['name']."</option>";
     }
     ?>
-    <form action="admin-addProducts.php" method="post"
-    enctype="multipart/form-data">
-    <select name="subcategory">
-      <?php
-      $sql = 'select name from subcategory';
-      $sth = $db->prepare($sql);
-      $sth->execute();
-      $sth->setFetchMode(PDO::FETCH_ASSOC);  
-      while($row = $sth->fetch()){
-        echo "<option value=\"".$row['name']."\">".$row['name']."</option>";
-      }
-      ?>
-    </select><br><br>
-    <label for="productName">Name</label>
-    <input type="text" name="productName" required="required"/><br>
-    <label for=price>Price</label>
-    <input type="number" name="price" required="required" min=1 max=99999/><br>
-    <label for=picture>Picture</label>
-    <input type="file" name="picturefn" required="required"><br>
-    <label for="info">Information about the product</label>
-    <input type="text" name="info" required="required"/><br><br>
-    <label for="onStock">Number of that product for sale</label>
-    <input type="number" name="onStock" required="required" min=0 max=9999/><br><br>
-    <label for="forSale">Is this product for sale?</label>
-      <select id="forSale" name="forSale" required>
-          <option value="0">Not for sale</option>
-          <option value="1">For sale</option>
-      </select></br></br>
-    <label for="rabatt">Discount in percentage.</label>
-    <input type="number" name=rabatt required="required" min=0 max=99><br><br>
-    <input type="submit" name="submit" value="Add new product">
-  </form>
+  </select><br><br>
+  <label for="productName">Name</label>
+  <input type="text" name="productName" required="required"/><br>
+  <label for=price>Price</label>
+  <input type="number" name="price" required="required" min=1 max=99999/><br>
+  <label for=picture>Picture</label>
+  <input type="file" name="picturefn" required="required"><br>
+  <label for="info">Information about the product</label>
+  <input type="text" name="info" required="required"/><br><br>
+  <label for="onStock">Number of that product for sale</label>
+  <input type="number" name="onStock" required="required" min=0 max=9999/><br><br>
+  <label for="forSale">Is this product for sale?</label>
+  <select id="forSale" name="forSale" required>
+    <option value="1">For sale</option>
+    <option value="0">Not for sale</option>
+  </select></br></br>
+  <label for="rabatt">Discount in percentage.</label>
+  <input type="number" name=rabatt required="required" min=0 max=99><br><br>
+  <input type="submit" name="submit" value="Add new product">
+</form>
 </div>

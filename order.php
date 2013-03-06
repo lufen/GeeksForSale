@@ -29,7 +29,7 @@ function OrderPlaced(){
     $sthTmp->setFetchMode(PDO::FETCH_ASSOC);  
     $row = $sthTmp->fetch();
     if(intval($row['rabatt']) != 0)
-      $price = intval($row['price'])*(intval($row['rabatt'])/100);
+      $price = (intval($row['price'])*(1-(intval($row['rabatt'])/100)));
     else
       $price = $row['price'];
 

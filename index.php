@@ -10,7 +10,7 @@ include 'Geeksforsaletop.php';
 <div id="content">
 	<t0>Products on sale </t0>
    <?php
-   $sql = "SELECT * from products where rabatt <>0";
+   $sql = "SELECT * from products where rabatt <>0 AND forSale=1";
    $sth = $db->prepare($sql);
    $sth->execute();
    $sth->setFetchMode(PDO::FETCH_ASSOC);  
@@ -21,7 +21,7 @@ include 'Geeksforsaletop.php';
   		echo "In stock: ".$row['onStock']."<br>";  
   		echo "Discount: ".$row['rabatt']."%<br>";
   		echo "Old price: ".$row['price']."</br>";
-  		echo "Price: ".intval($row['price'])-(intval($row['price']*($row['rabatt'])/100))."<br>";
+  		echo "Price: ".(intval($row['price'])*(1-(intval($row['rabatt'])/100)))."<br>";
 		echo "</div>";
     }
    ?>

@@ -24,7 +24,10 @@ include 'Geeksforsaletop.php';
  $sth = $db->prepare($sql);
  $sth->bindValue (':id', $id);
  $sth->execute();
- $sth->setFetchMode(PDO::FETCH_ASSOC);  
+ $sth->setFetchMode(PDO::FETCH_ASSOC);
+ if($sth->rowCount() < 1){
+  header ('location: index.php');
+ }  
  while($row = $sth->fetch()){
   echo $row['name']."<br>";
   echo "Details: ".$row['info']."<br>";

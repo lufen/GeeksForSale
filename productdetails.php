@@ -57,6 +57,7 @@ if(isUserLoggedIn() == true){
   echo "<t3> Please log in to add experience about this product</t3></br>";
 } 
 ?>
+</br></br>
 <t2> Comments </t2>
 <?php
 $sql = "Select * from productexperience where productID=:id";

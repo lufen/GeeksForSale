@@ -6,11 +6,6 @@
       <link rel="stylesheet" type="text/css" href="StyleIndex.css"/>
    </HEAD>
    <BODY>
-   	
-   	
-
-
-
      <div id="header">
       <?php include("topmenu.php"); ?>
  </div>

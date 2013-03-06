@@ -121,6 +121,10 @@ button {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+#productpicture{
+	padding-left: 50%;
+}
 #fb{
 	position: absolute;
 	left: 45%;

@@ -40,6 +40,7 @@ include 'Geeksforsaletop.php';
   echo '<img src="data:image/png;base64,'.$data.'" />';
 }
 ?>
+</br>
 <form method="get" action="productdetails.php">
   <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
   <shortlabel for="Quantity">Quantity</shortlabel>

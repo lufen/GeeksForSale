@@ -6,14 +6,14 @@ include 'Geeksforsaletop.php';
 if(isset($_POST['name']))
 {
 	var_dump($_POST);
-	$sql = 'UPDATE products set name = :name, price = :price, info = :information, rabatt = :rabatt, categoriID = :subcategory onStock = :onStock where  id = :id';
+	$sql = 'UPDATE products set name = :name, price = :price, info = :information, rabatt = :rabatt, categoriID = :subcategory, onStock = :onStock where  id = :id';
 	$sth = $db->prepare($sql);
 	$sth->bindValue(':name', $_POST['name']);
 	$sth->bindValue(':price', $_POST['price']);
 	$sth->bindValue(':information', $_POST['information']);
 	$sth->bindValue(':rabatt', $_POST['rabatt']);
 	$sth->bindValue(':subcategory', $_POST['subcategory']);
-	$sth->bindValue(':onStock', $_POST['onStock'])
+	$sth->bindValue(':onStock', $_POST['onStock']);
 	$sth->bindValue(':id', $_GET['id']);
 	$affectedRows = $sth->execute();
 	$line = __LINE__;

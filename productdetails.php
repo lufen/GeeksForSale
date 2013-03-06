@@ -19,7 +19,6 @@ include 'Geeksforsaletop.php';
 
 <div id="content">
  <?php
- echo "Details about product <br>";
  $id = $_GET['id'];
  $sql = "Select * from products where id=:id";
  $sth = $db->prepare($sql);
@@ -27,7 +26,7 @@ include 'Geeksforsaletop.php';
  $sth->execute();
  $sth->setFetchMode(PDO::FETCH_ASSOC);  
  while($row = $sth->fetch()){
-  echo "Name: ".$row['name']."<br>";
+  echo $row['name']."<br>";
   echo "Details: ".$row['info']."<br>";
   echo "In stock: ".$row['onStock']."<br>";  
   if(intval($row['rabatt'])!= 0){

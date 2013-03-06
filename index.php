@@ -21,6 +21,9 @@ include 'Geeksforsaletop.php';
   		echo "In stock: ".$row['onStock']."<br>";  
   		echo "Discount: ".$row['rabatt']."%<br>";
   		echo "Old price: ".$row['price']."</br>";
+		?>
+		<FORM><INPUT Type="BUTTON" VALUE="My shipped orders" ONCLICK="window.location.href='mypage-orders.php?shipped=1'"> </FORM>
+		<?php
   		echo "Price: ".(intval($row['price'])*(1-(intval($row['rabatt'])/100)))."<br>";
 		echo "</div>";
     }

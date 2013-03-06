@@ -4,3 +4,4 @@
  <FORM><INPUT Type="BUTTON" VALUE="Add Category" ONCLICK="window.location.href='admin-addCategories.php'"> </FORM>
  <FORM><INPUT Type="BUTTON" VALUE="Edit an category" ONCLICK="window.location.href='admin-editCategories.php'"> </FORM>
  <FORM><INPUT Type="BUTTON" VALUE="Blacklist a user" ONCLICK="window.location.href='admin-blackListUsers.php'"> </FORM>
+ </br>

@@ -1,2 +1,2 @@
-  <button> <a href="worker-myorders.php"> My orders </a> </button>
-  <button> <a href="worker.php"> Orders not taken </a> </button>
+<FORM><INPUT Type="BUTTON" VALUE="Orders not taken" ONCLICK="window.location.href='worker.php'"> </FORM>
+<FORM><INPUT Type="BUTTON" VALUE="My orders" ONCLICK="window.location.href='worker-myorders.php'"> </FORM>

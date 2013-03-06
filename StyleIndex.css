@@ -3,7 +3,9 @@ body
 background-image:url('Background2.jpg');
 background-attachment: fixed;
 }
-
+form {
+    display: inline;
+}
 
 #header{
 	height: 50px;

@@ -1,21 +1,21 @@
 <?php
-	function login ($email,$password) {
-		require "db.php";
-		$sql = 'SELECT * FROM users WHERE email=:email';
-		$sth = $db->prepare ($sql);
-		$sth->bindParam (':email', $email);
-		$sth->execute ();
-		if ($row = $sth->fetch()) {
-			$fromUser = convertPlainTextToEncrypted($password,$row['id']);
-			if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
-				$_SESSION['id'] = $row['id'];
-				$_SESSION['userLevel'] = $row['userLevel'];
-				header( 'Location: mypage.php' );
-			} else{
-				throw new Exception(' Not logged in,wrong username/password');
-			}
+function login ($email,$password) {
+	require "db.php";
+	$sql = 'SELECT * FROM users WHERE email=:email';
+	$sth = $db->prepare ($sql);
+	$sth->bindParam (':email', $email);
+	$sth->execute ();
+	if ($row = $sth->fetch()) {
+		$fromUser = convertPlainTextToEncrypted($password,$row['id']);
+		if($row['password'] == convertPlainTextToEncrypted($password,$row['id'])){
+			$_SESSION['id'] = $row['id'];
+			$_SESSION['userLevel'] = $row['userLevel'];
+			header( 'Location: mypage.php' );
+		} else{
+			throw new Exception(' Not logged in,wrong username/password');
 		}
 	}
+}
 
 function changePassword($old,$new){
 	require 'db.php';
@@ -72,9 +72,9 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	$sth->execute ();
 	if($sth->rowCount() == 0){
 	 // In case of error, rollback
-	 $db->rollBack();                     
-	 $db->query ('UNLOCK TABLES'); 
-	 throw new Exception('email not unique');
+		$db->rollBack();                     
+		$db->query ('UNLOCK TABLES'); 
+		throw new Exception('email not unique');
 	}
 	$uid = $db->lastInsertId();
 	echo "<p>OK<br>";
@@ -85,9 +85,9 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 	$sth->bindValue (':id',$uid);
 	$sth->execute ();
 	if ($sth->rowCount()==0) {                      
-	 $db->rollBack();                      
-	 $db->query('UNLOCK TABLES');
-	 throw new Exception('Unable to set new password');  
+		$db->rollBack();                      
+		$db->query('UNLOCK TABLES');
+		throw new Exception('Unable to set new password');  
 	}
 	$db->commit();
 	// new user created, then log him in
@@ -97,50 +97,59 @@ function registerUser($db,$name, $streetAddress,$postCode,$country, $email, $pas
 
 function isUserBlacklisted(){
 	require "db.php";
-		$sql = 'SELECT * FROM users WHERE id=:id';
-		$sth = $db->prepare ($sql);
-		$sth->bindParam (':id', $_SESSION['id']);
-		$sth->execute ();
-		if ($row = $sth->fetch()) {
-			if($row['blacklisted'] == 0)
-				return false;
-			else
-				return true;
-		}else
+	$sql = 'SELECT * FROM users WHERE id=:id';
+	$sth = $db->prepare ($sql);
+	$sth->bindParam (':id', $_SESSION['id']);
+	$sth->execute ();
+	if ($row = $sth->fetch()) {
+		if($row['blacklisted'] == 0)
+			return false;
+		else
 			return true;
+	}else
+	return true;
 }
 
 // Check if user,worker or admin logged in, if not then redirect to login page.
 function CheckIfUserLoggedIn(){
 	require_once 'sessionStart.php';
 	if(!isset($_SESSION['id'])){
-		 header( 'Location: index.php' );
-		}
+		header( 'Location: index.php' );
+	}
+}
+
+// Return true if user logged in
+function isUserLoggedIn(){
+	require_once 'sessionStart.php';
+	if(!isset($_SESSION['id'])){
+		return false;
+	}
+	return true;
 }
 
 // Check that an admin is logged in
 function CheckIfAdminLoggedIn(){
 	require_once 'sessionStart.php';
 	if($_SESSION['userLevel'] != 2){
-		 header( 'Location: index.php' );
-		}
+		header( 'Location: index.php' );
+	}
 }
 
 // Check that a worker is logged in
 function CheckIfWorkerLoggedIn(){
 	require_once 'sessionStart.php';
 	if($_SESSION['userLevel'] != 1){
-		 header( 'Location: index.php' );
-		}
+		header( 'Location: index.php' );
+	}
 }
 
 function emptyBasket(){
 	require_once 'sessionStart.php';
 	// Empty out the shoppingbasket
-	 foreach ($_SESSION as $key => $quantity){
-	    if($key ==="id" || $key === "userLevel")
-      		continue;
-      	unset($_SESSION[$key]);
-	 }
+	foreach ($_SESSION as $key => $quantity){
+		if($key ==="id" || $key === "userLevel")
+			continue;
+		unset($_SESSION[$key]);
+	}
 }
 ?>

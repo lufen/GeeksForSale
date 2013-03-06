@@ -1,4 +1,6 @@
 <?php
+require 'user.php';
+CheckIfUserLoggedIn();
 include 'Geeksforsaletop.php';
 ?>
 <?php

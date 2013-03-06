@@ -6,57 +6,49 @@ include 'Geeksforsaletop.php';
 ?>
 <div id= "content">
 	<?php
-		$sql = "Select * from productcategory";
+		include 'admin-buttons.php';
+		$sql = 'SELECT * FROM products where id = :id';
+
 		$sth = $db->prepare($sql);
-		$sth->execute();
-		$sth->setFetchMode(PDO::FETCH_ASSOC);  
-		while($categoryrow = $sth->fetch())
+		$sth->bindValue(':id', $_GET['id']);
+		$affectedRows = $sth->execute();
+		$sth->setFetchMode(PDO::FETCH_ASSOC);
+
+		$line = __LINE__;
+		$row = $sth->fetch();
+		if($affectedRows == 1)
 		{
-			echo "<br><t1>".$categoryrow['categoryName']."</t1><br>";
-				// Get subcategories
-			$sql = "Select * from subcategory where categoryid = ".$categoryrow['id'];
-			$sth2 = $db->prepare($sql);
-			$sth2->execute();
-			$sth2->setFetchMode(PDO::FETCH_ASSOC);
-			while($subCategoryRow = $sth2->fetch())
-			{
-				echo "<t2I>".$subCategoryRow['name']."</t2I><br>";
-				$subCategoryId = $subCategoryRow['id'];
-				$sql = 'SELECT * from products where categoriID = $subCategoryId';
-				$sth3 = $db->prepare($sql);
-				$sth3->execute();
-				$sth3->setFetchMode(PDO::FETCH_ASSOC);
+			?>
+			<form action="admin-addProducts.php" method="post"
+    		enctype="multipart/form-data">
+				<label for="name">Name of product</label>
+				<input type="text" name="name" required="required" value="<?php echo $row['name'];?>"/><br/>
+				<label for="price">What does the product cost? $</label>
+				<input type="number" name="Price" required="required" value="<?php echo $row['price'];?>"/><br/>
+				<label for="information">Information about the product</label>
+				<input type="text" name="information" required="required" value="<?php echo $row['info'];?>"/><br/>
+				<label for="rabatt">Discount in percentage</label>
+				<input type="number" name="rabatt" required="required" value="<?php echo $row['rabatt'];?>"/><br/>
+	    	<select name="subcategory" selected="<?php echo $row['categoriID'];?>">
+		      <?php
+		      $sql = 'select name from subcategory';
+		      $sth = $db->prepare($sql);
+		      $sth->execute();
+		      $sth->setFetchMode(PDO::FETCH_ASSOC);  
+		      while($row = $sth->fetch()){
+		        echo "<option value=\"".$row['name']."\">".$row['name']."</option>";
+		      }
+		      ?>
+    		</select><br>
+				<input type="number" name="categoriID" required="required" value="<?php echo $row['categoriID'];?>"/><br/>
+				<input type="submit" value="Submit changes"/></br>
+			</form>		
 
-				while($product = $sth->fetch())
-				{
-
-				}
-				
-
-			}
+			<?php
 		}
-/*
-	?>
-<p>Add user<br>
-  <form action="admin.php" method="post"
-  enctype="multipart/form-data">
-    <label for="username">Username</label>
-    <input type="text" name="username" required="required"/><br>
-    <label for="streetAddress">Street address</label>
-    <input type="text" name="streetAddress" required="required"/><br>
-    <label for="postCode">Postal code</label>
-    <input type="number" name="postCode" required="required" min=0 max=99999/><br>
-    <label for="country">Country</label>
-    <input type="text" name="country" required="required"/><br>
-    <label for="email">E-mail</label>
-    <input type="email" name="email" required="requried"/><br>
-    <label for="password">Password</label>
-    <input type="password" name="password" required="required"/><br>
-    <label for="userLevel">User level. 0 for regular user, 1 for workers and 2 for administrators</label><br>
-    <input type="number" name="userLevel" required="required" min=0 max=2/><br>
-    <input type="submit" name="submit" value="Add new user">
-  </form>
- </div>
- */
+	else
+	{
+		echo "Affected rows is ",$affectedRows," not 1 on line ", $line+1;
+	}
 	?>
 </div>

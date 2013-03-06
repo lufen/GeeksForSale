@@ -2,12 +2,33 @@
 require_once "user.php";
 CheckIfAdminLoggedIn();
 include 'Geeksforsaletop.php';
+
+if(isset($_POST['username']))
+{
+  $username = $_POST['username'];
+  $streetAddress = $_POST['streetAddress'];
+  $postCode = $_POST['postCode'];
+  $country = $_POST['country'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $userLevel = $_POST['userLevel'];
+  try
+  {
+    registerUser($db,$username, $streetAddress, $postCode, $country, $email, $password, $userLevel,0);
+    // Redirect back to homepage
+    header( 'Location: admin.php' );
+  }
+  catch(Exception $e)
+  {
+       echo $e->getMessage();
+  }
+}
 ?>
 
 <div id= "content">
 	<?php include 'admin-buttons.php'; ?>
     <p>Add user<br>
-      <form action="admin.php" method="post"
+      <form action="admin-addUser.php" method="post"
       enctype="multipart/form-data">
       <label for="username">Username</label>
       <input type="text" name="username" required="required"/><br>

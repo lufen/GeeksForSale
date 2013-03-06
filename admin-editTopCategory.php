@@ -14,7 +14,6 @@ function changeCategory(){
 		$sth->bindValue (':visible', $_POST['visible']);
 		$sth->bindValue (':id', $_POST['id']);
 		$affected_rows = $sth->execute();
-		echo $affected_rows;
 		if($affected_rows != 1){
 			// Should only change for one user at the time
 			$db->rollBack();                      
@@ -27,6 +26,7 @@ function changeCategory(){
 			throw new Exception('Unable to update information');  
 		}
 		$db->commit();
+		header( 'Location: admin-editCategories.php' );
 		echo "<p>Update done";
 }
 ?>

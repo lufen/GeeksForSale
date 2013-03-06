@@ -27,6 +27,7 @@ function changeCategory(){
 			throw new Exception('Unable to update information');  
 		}
 		$db->commit();
+		header( 'Location: admin-editCategories.php' );
 		echo "<p>Update done";
 }
 ?>

@@ -52,21 +52,20 @@ function SendOrder(){
       $tmpSTH->bindParam (':lineID', $row['lineID']);
       $db->exec('LOCK TABLES orderdetail WRITE');
       $tmpSTH->execute ();
-
+      }
       // Mark order as shipped
       $db->exec('LOCK TABLES orders WRITE');
       $sql = 'UPDATE orders set shipped=1 where id=:orderID';
       $sthOrder = $db->prepare ($sql);
       $sthOrder->bindParam (':orderID', $_POST['order']);
-      $db->exec('LOCK TABLES orders WRITE');
       $sthOrder->execute();
       $rowsChanged =  $sthOrder->rowCount();
-      if($rowsChanged != 1){
+      if($rowsChanged === 0){
         $db->rollBack();
         throw new Exception('Order not found');  
       }
-    }
     $db->commit();
+    header( 'Location: worker-myorders.php' );
   }
   catch(Exception $e){
     return $e->getMessage();

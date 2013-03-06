@@ -17,8 +17,6 @@ include 'Geeksforsaletop.php';
     while($row = $sth->fetch()){
     	echo "<div id=product>";
     	echo "<t1><a href=\"productdetails.php?id=".$row['id']."\">".$row['name']."</a></t1></br>";
-  		echo "Details: ".$row['info']."<br>";
-  		echo "In stock: ".$row['onStock']."<br>";  
   		echo "Discount: ".$row['rabatt']."%<br>";
   		echo "Old price: ".$row['price']."</br>";
   		echo "Price: ".(intval($row['price'])*(1-(intval($row['rabatt'])/100)))."<br>";

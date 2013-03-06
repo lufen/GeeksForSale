@@ -55,8 +55,9 @@ button {
 }
 
 #content{
-	font-family: 'Comic Sans MS';
+	font-family: 'Times New Roman';
 	float: left;
+	position: absolute;
 	border-radius: 10px;
 	width: 53.3%;
 	background-color: #ffffff;

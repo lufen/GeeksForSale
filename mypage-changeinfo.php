@@ -66,7 +66,7 @@ include 'Geeksforsaletop.php';
 				<label for="postcode">Post code</label>
 				<input type="text" name="postCode" required value="<?php echo $row['postCode'];?>"/><br/>
 				<label for="country">Country</label>
-				<select id="Country" name="Country">
+				<select id="Country" name="Country" required>
 				<?php include 'countryList.php'; ?>
 				<option selected="selected"><?php echo $row['country'] ?></option>
 				</select></br>

@@ -24,8 +24,9 @@ include 'Geeksforsaletop.php';
       <label for="postcode">Post code</label>
       <input type="text" name="postCode" required/><br/>
       <label for="country">Country</label>
-      <select id="Country" name="Country">
+      <select id="Country" name="Country" required>
       <?php include 'countryList.php'; ?>
+      <option selected="selected">Norway</option>
       </select></br>
       <label for="Email">Email</label>
       <input type="email" name="Email" required/><br/>

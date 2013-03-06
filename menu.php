@@ -1,14 +1,14 @@
 <?php
 require "db.php";
 	 // Get main categories
-$sql = "Select * from productcategory";
+$sql = "Select * from productcategory where visible=1";
 $sth = $db->prepare($sql);
 $sth->execute();
 $sth->setFetchMode(PDO::FETCH_ASSOC);  
 while($row = $sth->fetch()){
 	echo "<br><t1>".$row['categoryName']."</t1><br>";
 		// Get subcategories
-	$sql = "Select * from subcategory where categoryid = ".$row['id'];
+	$sql = "Select * from subcategory where visible=1 AND categoryid = ".$row['id'];
 	$sth2 = $db->prepare($sql);
 	$sth2->execute();
 	$sth2->setFetchMode(PDO::FETCH_ASSOC);

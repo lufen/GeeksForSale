@@ -32,7 +32,7 @@ include 'Geeksforsaletop.php';
   if(intval($row['rabatt'])!= 0){
     echo "Discount: ".$row['rabatt']."%<br>";
     echo "Old price: ".$row['price']."</br>";
-    echo "Price: ".intval($row['price'])*(intval($row['rabatt'])/100)."<br>";
+    echo "Price: ".(intval($row['price'])*(1-(intval($row['rabatt'])/100)))."<br>";
   }else
   echo "Price: $".$row['price']."<br>";  
 
@@ -40,6 +40,7 @@ include 'Geeksforsaletop.php';
   echo '<img src="data:image/png;base64,'.$data.'" />';
 }
 ?>
+</br>
 <form method="get" action="productdetails.php">
   <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"/>
   <shortlabel for="Quantity">Quantity</shortlabel>
@@ -56,6 +57,7 @@ if(isUserLoggedIn() == true){
   echo "<t3> Please log in to add experience about this product</t3></br>";
 } 
 ?>
+</br></br>
 <t2> Comments </t2>
 <?php
 $sql = "Select * from productexperience where productID=:id";

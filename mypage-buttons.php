@@ -1,3 +1,4 @@
-  <button> <a href="mypage-changeinfo.php"> Update your contact info </a> </button>
-  <button> <a href="mypage-orders.php?shipped=1"> My shipped orders </a> </button>
-  <button> <a href="mypage-orders.php?shipped=0"> Orders not shipped yet </a> </button>
+<FORM><INPUT Type="BUTTON" VALUE="Update your contact info" ONCLICK="window.location.href='mypage-changeinfo.php'"> </FORM>
+<FORM><INPUT Type="BUTTON" VALUE="My shipped orders" ONCLICK="window.location.href='mypage-orders.php?shipped=1'"> </FORM>
+<FORM><INPUT Type="BUTTON" VALUE="Orders not shipped yet" ONCLICK="window.location.href='mypage-orders.php?shipped=0'"> </FORM>
+</br>

@@ -35,7 +35,7 @@ include 'Geeksforsaletop.php';
       // Print out each row in the basket
       while($row = $sth->fetch()){
         if(intval($row['rabatt']) != 0)
-          $price = intval($row['price'])*(intval($row['rabatt'])/100);
+          $price = (intval($row['price'])*(1-(intval($row['rabatt'])/100)));
         else
           $price = $row['price'];
         echo "<t2>Name: </t2>".$row['name']."</br> <t2>Price per: </t2>$".$price." <t2>Qty: </t2>";

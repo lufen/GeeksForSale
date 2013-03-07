@@ -3,9 +3,8 @@ require_once "db.php";
 require_once "user.php";
 CheckIfAdminLoggedIn();
 include 'Geeksforsaletop.php';
-if(isset($_POST['name']))
+function updateProduct()
 {
-	var_dump($_POST);
 	$sql = 'UPDATE products set name = :name, price = :price, info = :information, rabatt = :rabatt, categoriID = :subcategory, onStock = :onStock where  id = :id';
 	$sth = $db->prepare($sql);
 	$sth->bindValue(':name', $_POST['name']);
@@ -21,10 +20,10 @@ if(isset($_POST['name']))
 	{
 		header( 'Location: admin-Products.php' );
 	}
-	else
-	{
-		header('index.php');
-	}
+}
+if(isset($_POST['name']))
+{
+	updateProduct();
 }	
 
 ?>

@@ -46,14 +46,15 @@ if(isset($_POST['name']))
     		enctype="multipart/form-data">
 				<label for="name">Name of product</label>
 				<input type="text" name="name" required="required" value="<?php echo $row['name'];?>"/><br/>
-				<label for="price">What does the product cost? $</label>
-				<input type="number" name="price" required="required" value="<?php echo $row['price'];?>"/><br/>
-				<label for="information">Information about the product</label>
-				<input type="text" name="information" required="required" value="<?php echo $row['info'];?>"/><br/>
+				<label for="price">Price $</label>
+				<input type="number" name="price" required="required" value="<?php echo $row['price'];?>"/><br/></br>
+				<label for="information">Description</label>
+				<input type="text" name="information" required="required" value="<?php echo $row['info'];?>"/><br/></br>
 				<label for="rabatt">Discount in percentage</label>
 				<input type="number" name="rabatt" required="required" value="<?php echo $row['rabatt'];?>"/><br/>
-				<label for="onStock">Available units of that product</label>
+				<label for="onStock">In storage</label>
 				<input type="number" name="onStock" required="required" value="<?php echo $row['onStock'];?>"/><br/>
+				<label for="subcategory">Subcategory</label>
 	    	<select name="subcategory" required="required">
 		      <?php
 		      $subcategory = $row['categoriID'];
